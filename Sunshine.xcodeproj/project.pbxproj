@@ -99,10 +99,10 @@
 		C497B6BF2308CA2100DB043C /* Sunshine */ = {
 			isa = PBXGroup;
 			children = (
+				C497B6F12308CC6100DB043C /* Assets */,
 				C497B6C02308CA2100DB043C /* AppDelegate.swift */,
 				C497B6C22308CA2100DB043C /* ViewController.swift */,
 				C497B6C42308CA2100DB043C /* Main.storyboard */,
-				C497B6CA2308CA2300DB043C /* Assets.xcassets */,
 				C497B6CC2308CA2300DB043C /* LaunchScreen.storyboard */,
 				C497B6CF2308CA2300DB043C /* Info.plist */,
 				C497B6C72308CA2100DB043C /* Sunshine.xcdatamodeld */,
@@ -126,6 +126,14 @@
 				C497B6E52308CA2300DB043C /* Info.plist */,
 			);
 			path = SunshineUITests;
+			sourceTree = "<group>";
+		};
+		C497B6F12308CC6100DB043C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C497B6CA2308CA2300DB043C /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
