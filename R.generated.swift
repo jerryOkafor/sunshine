@@ -16,22 +16,76 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 2 images.
+  /// This `R.image` struct is generated, and contains static references to 6 images.
   struct image {
+    /// Image `ic_humidity`.
+    static let ic_humidity = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_humidity")
     /// Image `ic_logo`.
     static let ic_logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_logo")
+    /// Image `ic_pressure`.
+    static let ic_pressure = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_pressure")
     /// Image `ic_settings`.
     static let ic_settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_settings")
+    /// Image `ic_uv_index`.
+    static let ic_uv_index = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_uv_index")
+    /// Image `ic_visibility`.
+    static let ic_visibility = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_visibility")
+    
+    /// `UIImage(named: "ic_humidity", bundle: ..., traitCollection: ...)`
+    static func ic_humidity(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_humidity, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "ic_logo", bundle: ..., traitCollection: ...)`
     static func ic_logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.ic_logo, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "ic_pressure", bundle: ..., traitCollection: ...)`
+    static func ic_pressure(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_pressure, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "ic_settings", bundle: ..., traitCollection: ...)`
     static func ic_settings(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.ic_settings, compatibleWith: traitCollection)
     }
+    
+    /// `UIImage(named: "ic_uv_index", bundle: ..., traitCollection: ...)`
+    static func ic_uv_index(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_uv_index, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "ic_visibility", bundle: ..., traitCollection: ...)`
+    static func ic_visibility(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_visibility, compatibleWith: traitCollection)
+    }
+    
+    fileprivate init() {}
+  }
+  
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  struct nib {
+    /// Nib `ForcastPagerViewCell`.
+    static let forcastPagerViewCell = _R.nib._ForcastPagerViewCell()
+    
+    /// `UINib(name: "ForcastPagerViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.forcastPagerViewCell) instead")
+    static func forcastPagerViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.forcastPagerViewCell)
+    }
+    
+    static func forcastPagerViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ForcastPagerViewCell? {
+      return R.nib.forcastPagerViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ForcastPagerViewCell
+    }
+    
+    fileprivate init() {}
+  }
+  
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  struct reuseIdentifier {
+    /// Reuse identifier `ForcastPagerViewCell`.
+    static let forcastPagerViewCell: Rswift.ReuseIdentifier<ForcastPagerViewCell> = Rswift.ReuseIdentifier(identifier: "ForcastPagerViewCell")
     
     fileprivate init() {}
   }
@@ -72,6 +126,35 @@ struct R: Rswift.Validatable {
 struct _R: Rswift.Validatable {
   static func validate() throws {
     try storyboard.validate()
+    try nib.validate()
+  }
+  
+  struct nib: Rswift.Validatable {
+    static func validate() throws {
+      try _ForcastPagerViewCell.validate()
+    }
+    
+    struct _ForcastPagerViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ForcastPagerViewCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ForcastPagerViewCell"
+      let name = "ForcastPagerViewCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ForcastPagerViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ForcastPagerViewCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "ic_logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_logo' is used in nib 'ForcastPagerViewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    fileprivate init() {}
   }
   
   struct storyboard: Rswift.Validatable {
@@ -112,6 +195,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "ic_humidity", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_humidity' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_pressure", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_pressure' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_uv_index", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_uv_index' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_visibility", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_visibility' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.main().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Main' as 'HomeViewController'.") }

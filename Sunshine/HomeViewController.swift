@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Then
+import FSPagerView
 
 class GradientView: UIView {
     
@@ -31,7 +32,18 @@ class GradientView: UIView {
 
 class HomeViewController: UIViewController {
     private let disposebag = DisposeBag()
-
+    @IBOutlet weak var pagerControl: FSPageControl!{
+        didSet{
+            self.pagerControl.numberOfPages = self.forcasts.count
+            self.pagerControl.contentHorizontalAlignment = .center
+            self.pagerControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            self.pagerControl.hidesForSinglePage = true
+        }
+    }
+    @IBOutlet weak var pagerView: FSPagerView!
+    
+    private let forcasts = ["Today","Tomorrow","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,8 +54,11 @@ class HomeViewController: UIViewController {
         let settingBarItem = UIBarButtonItem(image: R.image.ic_settings(), style: .plain, target: self, action: #selector(settings(_:)))
         refreshBarItem.tintColor = UIColor(hex: "#73767f")
         settingBarItem.tintColor = UIColor(hex: "#73767f")
-        
+
         self.navigationItem.rightBarButtonItems = [refreshBarItem,settingBarItem]
+        
+        
+        self.configureFspagerView()
         
         ApiClient.forcastByCityId(id: "524901").observeOn(MainScheduler.instance)
             .subscribe(onNext:{response in
@@ -54,6 +69,19 @@ class HomeViewController: UIViewController {
         
     }
     
+    private func configureFspagerView(){
+        self.pagerView.itemSize = CGSize(width: 220, height: 300)
+        self.pagerView.interitemSpacing = 20
+    
+        //register nib
+        let nib = UINib(resource: R.nib.forcastPagerViewCell)
+        self.pagerView.register(nib, forCellWithReuseIdentifier: R.reuseIdentifier.forcastPagerViewCell.identifier)
+        
+        self.pagerView.transformer = FSPagerViewTransformer(type: .linear)
+        
+        self.pagerView.delegate = self
+        self.pagerView.dataSource = self
+    }
     
     @objc
     private func refrsh(_ sender:UIBarButtonItem){
@@ -76,3 +104,25 @@ class HomeViewController: UIViewController {
 
 }
 
+
+//FSPageView Datasource
+extension HomeViewController : FSPagerViewDataSource{
+    func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return self.forcasts.count
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        let cell  = pagerView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.forcastPagerViewCell.identifier, at: index) as! ForcastPagerViewCell
+        
+        return cell
+    }
+    
+    
+}
+
+//FSPageView Datasource
+extension HomeViewController : FSPagerViewDelegate{
+    func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
+        self.pagerControl.currentPage = targetIndex
+    }
+}
