@@ -27,6 +27,7 @@
 		C4C24D11230EB64E00F4CE05 /* ForcastPagerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C24D0F230EB64E00F4CE05 /* ForcastPagerViewCell.xib */; };
 		C4C24D16230EC1DB00F4CE05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D15230EC1DB00F4CE05 /* HomeViewModel.swift */; };
 		C4C24D18230EC3E300F4CE05 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */; };
+		C4C24D1B230F459400F4CE05 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D1A230F459400F4CE05 /* DetailViewController.swift */; };
 		C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BE8230C3B3000497BAE /* ApiClient.swift */; };
 		C4DE3BEB230C3BED00497BAE /* ApiCleint+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */; };
 		C4DE3BEE230C3F4200497BAE /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */; };
@@ -85,6 +86,7 @@
 		C4C24D0F230EB64E00F4CE05 /* ForcastPagerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForcastPagerViewCell.xib; sourceTree = "<group>"; };
 		C4C24D15230EC1DB00F4CE05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		C4C24D1A230F459400F4CE05 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C4DE3BE8230C3B3000497BAE /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiCleint+Constants.swift"; sourceTree = "<group>"; };
 		C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		C4C24D12230EC1AD00F4CE05 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				C4C24D19230F456400F4CE05 /* Detail */,
 				C4C24D14230EC1C000F4CE05 /* Settings */,
 				C4C24D13230EC1B700F4CE05 /* Home */,
 			);
@@ -266,6 +269,14 @@
 				C4C24CFA230DEB3700F4CE05 /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C4C24D19230F456400F4CE05 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C4C24D1A230F459400F4CE05 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		C4DE3BE7230C3B1F00497BAE /* API */ = {
@@ -550,6 +561,7 @@
 				C4C24D00230DFA6C00F4CE05 /* R.generated.swift in Sources */,
 				C4DE3BFC230C47F800497BAE /* Main.swift in Sources */,
 				C4DE3BF1230C470A00497BAE /* ForcastResponse.swift in Sources */,
+				C4C24D1B230F459400F4CE05 /* DetailViewController.swift in Sources */,
 				C4DE3BFB230C47F800497BAE /* ForcastItem.swift in Sources */,
 				C4C24D05230E97D700F4CE05 /* UIView+Extensions.swift in Sources */,
 				C497B6C12308CA2100DB043C /* AppDelegate.swift in Sources */,

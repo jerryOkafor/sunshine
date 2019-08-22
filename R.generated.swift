@@ -82,8 +82,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `DailyItemViewCell`.
+    static let dailyItemViewCell: Rswift.ReuseIdentifier<DailyItemViewCell> = Rswift.ReuseIdentifier(identifier: "DailyItemViewCell")
     /// Reuse identifier `ForcastPagerViewCell`.
     static let forcastPagerViewCell: Rswift.ReuseIdentifier<ForcastPagerViewCell> = Rswift.ReuseIdentifier(identifier: "ForcastPagerViewCell")
     
@@ -182,9 +184,14 @@ struct _R: Rswift.Validatable {
       typealias InitialController = UIKit.UINavigationController
       
       let bundle = R.hostingBundle
+      let detailViewController = StoryboardViewControllerResource<DetailViewController>(identifier: "DetailViewController")
       let homeViewController = StoryboardViewControllerResource<HomeViewController>(identifier: "HomeViewController")
       let name = "Main"
       let settingsViewController = StoryboardViewControllerResource<SettingsViewController>(identifier: "SettingsViewController")
+      
+      func detailViewController(_: Void = ()) -> DetailViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailViewController)
+      }
       
       func homeViewController(_: Void = ()) -> HomeViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: homeViewController)
@@ -196,11 +203,13 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "ic_humidity", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_humidity' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_logo' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ic_pressure", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_pressure' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ic_uv_index", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_uv_index' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ic_visibility", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_visibility' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.main().detailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailViewController' could not be loaded from storyboard 'Main' as 'DetailViewController'.") }
         if _R.storyboard.main().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Main' as 'HomeViewController'.") }
         if _R.storyboard.main().settingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsViewController' could not be loaded from storyboard 'Main' as 'SettingsViewController'.") }
       }

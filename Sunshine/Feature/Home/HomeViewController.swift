@@ -34,6 +34,8 @@ class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private let vm  = HomeViewModel(rxDisposeBag: DisposeBag())
+    @IBOutlet weak var hourlyCollectionView: UICollectionView!
+    @IBOutlet weak var hourlyCollectionViewFlowlayout: UICollectionViewFlowLayout!
     
     
     @IBOutlet weak var pagerControl: FSPageControl!{
@@ -64,6 +66,7 @@ class HomeViewController: UIViewController {
         
         
         self.configureFspagerView()
+        self.configureHourlyCollectionView()
         
         //bind vm
         vm.forcastProgressEvent.bind{progress in
@@ -95,8 +98,23 @@ class HomeViewController: UIViewController {
 
     }
     
+    private func configureHourlyCollectionView(){
+        self.hourlyCollectionView.delegate = self
+        self.hourlyCollectionView.dataSource = self
+        
+        //configure collectionView flowlayout item size
+        let space: CGFloat = 2.0
+        let dimension = (view.frame.size.width - (3 * space)) / 4.0
+        
+        self.hourlyCollectionViewFlowlayout.minimumInteritemSpacing = space
+        self.hourlyCollectionViewFlowlayout.minimumLineSpacing = space
+        
+        //set the item size to square
+        self.hourlyCollectionViewFlowlayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
     private func configureFspagerView(){
-        self.pagerView.itemSize = CGSize(width: 230, height: 300)
+        self.pagerView.itemSize = CGSize(width: 230, height: 320)
         self.pagerView.interitemSpacing = 20
     
         //register nib
@@ -171,5 +189,42 @@ extension HomeViewController : FSPagerViewDelegate{
         }else{
             return nil
         }
+    }
+}
+
+
+//UICollectoinViewDatasource
+extension HomeViewController : UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dailyItemViewCell.identifier, for: indexPath) as! DailyItemViewCell
+        
+        return cell
+    }
+    
+    
+}
+
+//UICollectionViewDelegate
+extension HomeViewController : UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let settingsVC = R.storyboard.main.detailViewController()!
+        self.navigationController?.pushViewController(settingsVC, animated: true)
+    }
+}
+
+
+class DailyItemViewCell: UICollectionViewCell {
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var tempLabel: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
 }
