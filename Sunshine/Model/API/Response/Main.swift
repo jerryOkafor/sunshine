@@ -2,14 +2,14 @@
 
 import Foundation
 struct Main : Codable {
-	let temp : Double?
-	let minTemp : Double?
-	let maxTemp : Double?
-	let pressure : Double?
-	let seaLevel : Double?
-	let groundLevel : Double?
-	let humidity : Int?
-	let tempKelvin : Double?
+	let temp : Double
+	let minTemp : Double
+	let maxTemp : Double
+	let pressure : Double
+	let seaLevel : Double
+	let groundLevel : Double
+	let humidity : Int
+	let tempKelvin : Double
 
 	enum CodingKeys: String, CodingKey {
 

@@ -2,13 +2,13 @@
 import Foundation
 
 struct ForcastItem : Codable {
-	let dateMilli : Int?
-	let main : Main?
-	let weather : [WeatherItem]?
-	let clouds : Clouds?
-	let wind : Wind?
+	let dateMilli : Int
+	let main : Main
+	let weather : [WeatherItem]
+	let clouds : Clouds
+	let wind : Wind
     let rain : [String:Double]?
-	let dateString : String?
+	let dateString : String
 
 	enum CodingKeys: String, CodingKey {
 

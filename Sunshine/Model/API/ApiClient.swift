@@ -47,7 +47,7 @@ class ApiClient {
         /// Returns the endpoint path that we append to the base url
         private var path : String {
             switch self {
-            case .forcastByCityId(let id) : return "forecast?id=\(id)&cnt=8&appid=\(ApiClient.appId)"
+            case .forcastByCityId(let id) : return "forecast?id=\(id)&cnt=40&appid=\(ApiClient.appId)"
                 
             }
         }

@@ -25,6 +25,8 @@
 		C4C24D0C230EB04900F4CE05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C24D0B230EB04900F4CE05 /* Assets.xcassets */; };
 		C4C24D10230EB64E00F4CE05 /* ForcastPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D0E230EB64E00F4CE05 /* ForcastPagerViewCell.swift */; };
 		C4C24D11230EB64E00F4CE05 /* ForcastPagerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C24D0F230EB64E00F4CE05 /* ForcastPagerViewCell.xib */; };
+		C4C24D16230EC1DB00F4CE05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D15230EC1DB00F4CE05 /* HomeViewModel.swift */; };
+		C4C24D18230EC3E300F4CE05 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */; };
 		C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BE8230C3B3000497BAE /* ApiClient.swift */; };
 		C4DE3BEB230C3BED00497BAE /* ApiCleint+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */; };
 		C4DE3BEE230C3F4200497BAE /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */; };
@@ -81,6 +83,8 @@
 		C4C24D0B230EB04900F4CE05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4C24D0E230EB64E00F4CE05 /* ForcastPagerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForcastPagerViewCell.swift; sourceTree = "<group>"; };
 		C4C24D0F230EB64E00F4CE05 /* ForcastPagerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForcastPagerViewCell.xib; sourceTree = "<group>"; };
+		C4C24D15230EC1DB00F4CE05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C4DE3BE8230C3B3000497BAE /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiCleint+Constants.swift"; sourceTree = "<group>"; };
 		C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
@@ -172,15 +176,14 @@
 		C497B6BF2308CA2100DB043C /* Sunshine */ = {
 			isa = PBXGroup;
 			children = (
+				C4C24D12230EC1AD00F4CE05 /* Feature */,
 				C4C24D0D230EB3EA00F4CE05 /* Resources */,
 				C4C24D01230E970600F4CE05 /* Widgets */,
 				C4DE3BEC230C3F2800497BAE /* Extensions */,
 				C497B6F2230AADC600DB043C /* Model */,
 				C497B6F12308CC6100DB043C /* Assets */,
 				C497B6C02308CA2100DB043C /* AppDelegate.swift */,
-				C497B6C22308CA2100DB043C /* HomeViewController.swift */,
 				C497B6CF2308CA2300DB043C /* Info.plist */,
-				C4C24CFA230DEB3700F4CE05 /* SettingsViewController.swift */,
 			);
 			path = Sunshine;
 			sourceTree = "<group>";
@@ -239,6 +242,32 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C4C24D12230EC1AD00F4CE05 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				C4C24D14230EC1C000F4CE05 /* Settings */,
+				C4C24D13230EC1B700F4CE05 /* Home */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		C4C24D13230EC1B700F4CE05 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C497B6C22308CA2100DB043C /* HomeViewController.swift */,
+				C4C24D15230EC1DB00F4CE05 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C4C24D14230EC1C000F4CE05 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C4C24CFA230DEB3700F4CE05 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		C4DE3BE7230C3B1F00497BAE /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +284,7 @@
 				C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */,
 				C4C24CFC230DEC0900F4CE05 /* UIColor+Extensions.swift */,
 				C4C24D04230E97D700F4CE05 /* UIView+Extensions.swift */,
+				C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C24D16230EC1DB00F4CE05 /* HomeViewModel.swift in Sources */,
 				C4DE3BF9230C47F800497BAE /* WeatherItem.swift in Sources */,
 				C497B6C32308CA2100DB043C /* HomeViewController.swift in Sources */,
 				C4C24D00230DFA6C00F4CE05 /* R.generated.swift in Sources */,
@@ -525,6 +556,7 @@
 				C4C24D03230E972600F4CE05 /* WeatherView.swift in Sources */,
 				C497B6C92308CA2100DB043C /* Sunshine.xcdatamodeld in Sources */,
 				C4DE3BEB230C3BED00497BAE /* ApiCleint+Constants.swift in Sources */,
+				C4C24D18230EC3E300F4CE05 /* UIViewController+Extensions.swift in Sources */,
 				C4C24D10230EB64E00F4CE05 /* ForcastPagerViewCell.swift in Sources */,
 				C4DE3BFA230C47F800497BAE /* Clouds.swift in Sources */,
 				C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */,

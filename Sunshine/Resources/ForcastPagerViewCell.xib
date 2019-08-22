@@ -76,6 +76,12 @@
                     <real key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="dateLabel" destination="7F2-4y-QXq" id="yhy-nD-L9g"/>
+                <outlet property="iconImageView" destination="bdl-yb-JhU" id="i6B-fc-cyG"/>
+                <outlet property="nameLabel" destination="4D2-Ua-Jyv" id="m6h-wf-4c8"/>
+                <outlet property="tempLabel" destination="XXK-qP-081" id="HgQ-Se-xdy"/>
+            </connections>
             <point key="canvasLocation" x="160.86956521739131" y="152.67857142857142"/>
         </collectionViewCell>
     </objects>

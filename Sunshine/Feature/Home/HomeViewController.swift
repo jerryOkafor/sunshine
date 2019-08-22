@@ -31,7 +31,11 @@ class GradientView: UIView {
 }
 
 class HomeViewController: UIViewController {
-    private let disposebag = DisposeBag()
+    private let disposeBag = DisposeBag()
+
+    private let vm  = HomeViewModel(rxDisposeBag: DisposeBag())
+    
+    
     @IBOutlet weak var pagerControl: FSPageControl!{
         didSet{
             self.pagerControl.numberOfPages = self.forcasts.count
@@ -42,7 +46,8 @@ class HomeViewController: UIViewController {
     }
     @IBOutlet weak var pagerView: FSPagerView!
     
-    private let forcasts = ["Today","Tomorrow","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"]
+    private var forcasts = [(String,[ForcastItem])]()
+    private var forcastDictKeys = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,17 +65,38 @@ class HomeViewController: UIViewController {
         
         self.configureFspagerView()
         
-        ApiClient.forcastByCityId(id: "524901").observeOn(MainScheduler.instance)
-            .subscribe(onNext:{response in
-                print(response)
-            },onError:{error in
-                print(error)
-            }).disposed(by: disposebag)
+        //bind vm
+        vm.forcastProgressEvent.bind{progress in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = progress
+        }.disposed(by: disposeBag)
         
+        vm.errorEvent.bind{error in
+            self.showError(error: error)
+        }.disposed(by: disposeBag)
+        
+        vm.infoEvent.bind{info in
+            self.showInfo(info: info)
+        }.disposed(by: disposeBag)
+        
+        vm.forcasResponseEvent.bind{response in
+            self.navigationItem.title = response.city.name
+            
+            self.forcasts = Dictionary(grouping: response.list, by: { (element: ForcastItem) in
+            return self.parseDate(element.dateString,displayFormat: "yyyy-MM-dd")!
+            }).sorted(by: { $0.0 < $1.0 })
+            
+            
+            self.pagerView.reloadData()
+            self.pagerControl.numberOfPages  = self.forcasts.count
+        }.disposed(by: disposeBag)
+        
+        //load forcast
+        vm.forcastByCityId(cityId: "")
+
     }
     
     private func configureFspagerView(){
-        self.pagerView.itemSize = CGSize(width: 220, height: 300)
+        self.pagerView.itemSize = CGSize(width: 230, height: 300)
         self.pagerView.interitemSpacing = 20
     
         //register nib
@@ -85,7 +111,8 @@ class HomeViewController: UIViewController {
     
     @objc
     private func refrsh(_ sender:UIBarButtonItem){
-        
+        //load forcast
+        vm.forcastByCityId(cityId: "")
     }
     
     @objc
@@ -114,6 +141,11 @@ extension HomeViewController : FSPagerViewDataSource{
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell  = pagerView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.forcastPagerViewCell.identifier, at: index) as! ForcastPagerViewCell
         
+        let forcast = self.forcasts[index]
+        print("Binding forcast Item : \(forcast)")
+        
+        cell.dateLabel.text = self.parseDate(forcast.0,readFormat: "yyyy-MM-dd",displayFormat: "MMM d, yyyy")
+        
         return cell
     }
     
@@ -123,6 +155,21 @@ extension HomeViewController : FSPagerViewDataSource{
 //FSPageView Datasource
 extension HomeViewController : FSPagerViewDelegate{
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
+        print("Target Index : \(targetIndex)")
         self.pagerControl.currentPage = targetIndex
+    }
+    
+    private func parseDate(_ dateStr:String,readFormat:String = "yyyy-MM-dd HH:mm:ss",displayFormat:String = "MMM d, yyyy @ HH:mm:ss") -> String?{
+        let readDateFormatter = DateFormatter()
+        readDateFormatter.dateFormat = readFormat
+        
+        if let date = readDateFormatter.date(from: dateStr){
+            let displayDateFormatter = DateFormatter()
+            displayDateFormatter.dateFormat = displayFormat
+            return  displayDateFormatter.string(from: date)
+            
+        }else{
+            return nil
+        }
     }
 }
