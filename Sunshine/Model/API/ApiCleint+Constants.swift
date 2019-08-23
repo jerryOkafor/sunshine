@@ -8,6 +8,7 @@
 
 import Foundation
 extension ApiClient{
+    static let defaultCityId = "2332459" //Lagos NG
     static let appId = "8dbfa5597476de964fe8fdad06937ec4"
     static let baseUrl = "https://api.openweathermap.org/data/2.5/"
 }

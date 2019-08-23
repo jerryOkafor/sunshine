@@ -28,6 +28,7 @@
 		C4C24D16230EC1DB00F4CE05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D15230EC1DB00F4CE05 /* HomeViewModel.swift */; };
 		C4C24D18230EC3E300F4CE05 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */; };
 		C4C24D1B230F459400F4CE05 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D1A230F459400F4CE05 /* DetailViewController.swift */; };
+		C4C24D1E230FEBC500F4CE05 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D1D230FEBC500F4CE05 /* Util.swift */; };
 		C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BE8230C3B3000497BAE /* ApiClient.swift */; };
 		C4DE3BEB230C3BED00497BAE /* ApiCleint+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */; };
 		C4DE3BEE230C3F4200497BAE /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */; };
@@ -87,6 +88,7 @@
 		C4C24D15230EC1DB00F4CE05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C4C24D1A230F459400F4CE05 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C4C24D1D230FEBC500F4CE05 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C4DE3BE8230C3B3000497BAE /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiCleint+Constants.swift"; sourceTree = "<group>"; };
 		C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		C497B6BF2308CA2100DB043C /* Sunshine */ = {
 			isa = PBXGroup;
 			children = (
+				C4C24D1C230FEB9700F4CE05 /* Util */,
 				C4C24D12230EC1AD00F4CE05 /* Feature */,
 				C4C24D0D230EB3EA00F4CE05 /* Resources */,
 				C4C24D01230E970600F4CE05 /* Widgets */,
@@ -277,6 +280,14 @@
 				C4C24D1A230F459400F4CE05 /* DetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C4C24D1C230FEB9700F4CE05 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C4C24D1D230FEBC500F4CE05 /* Util.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		C4DE3BE7230C3B1F00497BAE /* API */ = {
@@ -566,6 +577,7 @@
 				C4C24D05230E97D700F4CE05 /* UIView+Extensions.swift in Sources */,
 				C497B6C12308CA2100DB043C /* AppDelegate.swift in Sources */,
 				C4C24D03230E972600F4CE05 /* WeatherView.swift in Sources */,
+				C4C24D1E230FEBC500F4CE05 /* Util.swift in Sources */,
 				C497B6C92308CA2100DB043C /* Sunshine.xcdatamodeld in Sources */,
 				C4DE3BEB230C3BED00497BAE /* ApiCleint+Constants.swift in Sources */,
 				C4C24D18230EC3E300F4CE05 /* UIViewController+Extensions.swift in Sources */,

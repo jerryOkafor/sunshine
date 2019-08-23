@@ -16,8 +16,24 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
+    /// Image `icClear`.
+    static let icClear = Rswift.ImageResource(bundle: R.hostingBundle, name: "icClear")
+    /// Image `icCloudy`.
+    static let icCloudy = Rswift.ImageResource(bundle: R.hostingBundle, name: "icCloudy")
+    /// Image `icFogCopy`.
+    static let icFogCopy = Rswift.ImageResource(bundle: R.hostingBundle, name: "icFogCopy")
+    /// Image `icLightClouds`.
+    static let icLightClouds = Rswift.ImageResource(bundle: R.hostingBundle, name: "icLightClouds")
+    /// Image `icLightRain`.
+    static let icLightRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "icLightRain")
+    /// Image `icRain`.
+    static let icRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "icRain")
+    /// Image `icSnow`.
+    static let icSnow = Rswift.ImageResource(bundle: R.hostingBundle, name: "icSnow")
+    /// Image `icStorm`.
+    static let icStorm = Rswift.ImageResource(bundle: R.hostingBundle, name: "icStorm")
     /// Image `ic_humidity`.
     static let ic_humidity = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_humidity")
     /// Image `ic_logo`.
@@ -30,6 +46,46 @@ struct R: Rswift.Validatable {
     static let ic_uv_index = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_uv_index")
     /// Image `ic_visibility`.
     static let ic_visibility = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_visibility")
+    
+    /// `UIImage(named: "icClear", bundle: ..., traitCollection: ...)`
+    static func icClear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icClear, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icCloudy", bundle: ..., traitCollection: ...)`
+    static func icCloudy(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icCloudy, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icFogCopy", bundle: ..., traitCollection: ...)`
+    static func icFogCopy(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icFogCopy, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icLightClouds", bundle: ..., traitCollection: ...)`
+    static func icLightClouds(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icLightClouds, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icLightRain", bundle: ..., traitCollection: ...)`
+    static func icLightRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icLightRain, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icRain", bundle: ..., traitCollection: ...)`
+    static func icRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icRain, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icSnow", bundle: ..., traitCollection: ...)`
+    static func icSnow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icSnow, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icStorm", bundle: ..., traitCollection: ...)`
+    static func icStorm(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icStorm, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "ic_humidity", bundle: ..., traitCollection: ...)`
     static func ic_humidity(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {

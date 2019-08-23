@@ -17,6 +17,11 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "#73767f")
-//        self.navigationController?.navigationBar.topItem?.title = " "
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }

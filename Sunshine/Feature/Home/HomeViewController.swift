@@ -49,7 +49,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var pagerView: FSPagerView!
     
     private var forcasts = [(String,[ForcastItem])]()
-    private var forcastDictKeys = [String]()
+    private var hourlyForcast = [ForcastItem]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,16 +86,18 @@ class HomeViewController: UIViewController {
             self.navigationItem.title = response.city.name
             
             self.forcasts = Dictionary(grouping: response.list, by: { (element: ForcastItem) in
-            return self.parseDate(element.dateString,displayFormat: "yyyy-MM-dd")!
+            return Util.parseDate(element.dateString,displayFormat: "yyyy-MM-dd")!
             }).sorted(by: { $0.0 < $1.0 })
-            
             
             self.pagerView.reloadData()
             self.pagerControl.numberOfPages  = self.forcasts.count
+            
+            self.loadHourlyForcast(forIndex: 0)
+            
         }.disposed(by: disposeBag)
         
         //load forcast
-        vm.forcastByCityId(cityId: "")
+        vm.forcastByCityId(cityId: ApiClient.defaultCityId)
 
     }
     
@@ -114,7 +117,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configureFspagerView(){
-        self.pagerView.itemSize = CGSize(width: 230, height: 320)
+        self.pagerView.itemSize = CGSize(width: 230, height: 300)
         self.pagerView.interitemSpacing = 20
     
         //register nib
@@ -160,9 +163,9 @@ extension HomeViewController : FSPagerViewDataSource{
         let cell  = pagerView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.forcastPagerViewCell.identifier, at: index) as! ForcastPagerViewCell
         
         let forcast = self.forcasts[index]
-        print("Binding forcast Item : \(forcast)")
         
-        cell.dateLabel.text = self.parseDate(forcast.0,readFormat: "yyyy-MM-dd",displayFormat: "MMM d, yyyy")
+        cell.nameLabel.text = Util.getDayOfWeekText(forcast.0,readFormat:"yyyy-MM-dd")
+        cell.dateLabel.text = Util.parseDate(forcast.0,readFormat: "yyyy-MM-dd",displayFormat: "MMM d, yyyy")
         
         return cell
     }
@@ -172,36 +175,44 @@ extension HomeViewController : FSPagerViewDataSource{
 
 //FSPageView Datasource
 extension HomeViewController : FSPagerViewDelegate{
-    func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
-        print("Target Index : \(targetIndex)")
-        self.pagerControl.currentPage = targetIndex
+    
+    func loadHourlyForcast(forIndex index : Int){
+        let forcastDays = self.forcasts[index].1
+        self.hourlyForcast  = forcastDays
+        self.hourlyCollectionView.reloadData()
     }
     
-    private func parseDate(_ dateStr:String,readFormat:String = "yyyy-MM-dd HH:mm:ss",displayFormat:String = "MMM d, yyyy @ HH:mm:ss") -> String?{
-        let readDateFormatter = DateFormatter()
-        readDateFormatter.dateFormat = readFormat
-        
-        if let date = readDateFormatter.date(from: dateStr){
-            let displayDateFormatter = DateFormatter()
-            displayDateFormatter.dateFormat = displayFormat
-            return  displayDateFormatter.string(from: date)
-            
-        }else{
-            return nil
-        }
+    func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
+        self.pagerControl.currentPage = targetIndex
+        self.loadHourlyForcast(forIndex: targetIndex)
     }
+
 }
 
 
 //UICollectoinViewDatasource
 extension HomeViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.hourlyForcast.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dailyItemViewCell.identifier, for: indexPath) as! DailyItemViewCell
         
+        let forcastHour = self.hourlyForcast[indexPath.row]
+            
+        cell.timeLabel.text = Util.parseDate(forcastHour.dateString,displayFormat:"hha")?.lowercased()
+        cell.tempLabel.text = "22°"
+        cell.iconImageView.image =  Util.getImageForWeatherCondition(weatherId: forcastHour.weather[0].id)
+        cell.tempLabel.text = Util.formatTemperature(temp: forcastHour.main.temp)
+        cell.contentView.backgroundColor = .clear
+        cell.contentView.isUserInteractionEnabled = true
+        
+        
+//        else{
+//            cell.contentView.backgroundColor = .gray
+//            cell.contentView.isUserInteractionEnabled = false
+//        }
         return cell
     }
     
