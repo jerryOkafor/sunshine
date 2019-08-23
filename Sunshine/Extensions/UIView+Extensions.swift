@@ -78,3 +78,21 @@ extension UIView{
         if let action = self.tapGestureRecognizerAction {action?()}
     }
 }
+
+extension UIView{
+    func addGradient(_ colors:[CGColor]){
+        let gradient = CAGradientLayer().then{
+            let maxWidth = max(self.bounds.size.height,self.bounds.size.width)
+            let squareFrame = CGRect(origin: self.bounds.origin, size: CGSize(width: maxWidth, height: maxWidth))
+            $0.frame = squareFrame
+            
+            $0.colors = colors
+            $0.locations = [0.0 , 1.0]
+            $0.startPoint = CGPoint(x: 0.0, y: 1.0)
+            $0.endPoint = CGPoint(x: 1.0, y: 1.0)
+        }
+        self.layer.insertSublayer(gradient, at: 0)
+        
+        self.setNeedsLayout()
+    }
+}

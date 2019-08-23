@@ -19,8 +19,7 @@ class GradientView: UIView {
     }
     
     override func layoutSubviews() {
-        let gradientLayer = layer as! CAGradientLayer
-        gradientLayer.do{
+      (layer as! CAGradientLayer).do{
             $0.colors = [UIColor(hex: "#484b5b").cgColor, UIColor(hex: "#2c2d35").cgColor]
             $0.locations = [0.0 , 1.0]
             $0.startPoint = CGPoint(x: 0.0, y: 1.0)
@@ -162,7 +161,11 @@ extension HomeViewController : FSPagerViewDataSource{
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell  = pagerView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.forcastPagerViewCell.identifier, at: index) as! ForcastPagerViewCell
         
+        cell.contentView.addGradient(self.getColorForIndex(index))
+        
         let forcast = self.forcasts[index]
+        
+        cell.tempLabel.text = "32°"
         
         cell.nameLabel.text = Util.getDayOfWeekText(forcast.0,readFormat:"yyyy-MM-dd")
         cell.dateLabel.text = Util.parseDate(forcast.0,readFormat: "yyyy-MM-dd",displayFormat: "MMM d, yyyy")
@@ -170,9 +173,23 @@ extension HomeViewController : FSPagerViewDataSource{
         return cell
     }
     
-    
-}
+    func getColorForIndex(_ index:Int) -> [CGColor]{
+        switch index {
+        case 0 : return [UIColor(hex: "#0d7af3").cgColor, UIColor(hex: "#849ff1").cgColor]
+            
+        case 1 : return [UIColor(hex: "#f06d08").cgColor, UIColor(hex: "#f3d458").cgColor]
+        
+        case 2 : return [UIColor(hex: "#127cf1").cgColor, UIColor(hex: "#f184eca6").cgColor]
+            
+        case 3 : return [UIColor(hex: "#0ce0d9").cgColor, UIColor(hex: "#84f1d6").cgColor]
+            
+        case 4 : return [UIColor(hex: "#127cf1").cgColor, UIColor(hex: "#84cef1").cgColor]
+            
+        default: return [UIColor(hex: "#0d7af3").cgColor, UIColor(hex: "#0d7af3").cgColor]
+        }
+    }
 
+}
 //FSPageView Datasource
 extension HomeViewController : FSPagerViewDelegate{
     
