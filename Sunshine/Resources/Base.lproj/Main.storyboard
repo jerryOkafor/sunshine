@@ -213,7 +213,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="icon" value="icMapPin"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Location"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="value" value="410210"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="value" value="Lagos"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="xEm-kG-InF" appends="YES" id="Y5S-S9-Wbd"/>
@@ -238,7 +238,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="icon" value="icThermometer"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Temperature Unit"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Preferred Unit"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="value" value="Metric"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -281,6 +281,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUn-d5-RUo"/>
                     </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="Egs-U7-m4e" id="coW-yU-9Vf"/>
+                        <outlet property="notificationSwitch" destination="GyA-nG-rtc" id="y16-IE-vfA"/>
+                        <outlet property="unitLabel" destination="iHL-o3-oM3" id="7vT-me-cZH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RS-No-0r1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="xEm-kG-InF">

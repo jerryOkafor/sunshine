@@ -10,6 +10,8 @@
 		4F213279A144781E0C70EEF1 /* Pods_SunshineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFC54EEC2D8C60A4CEAD88E /* Pods_SunshineTests.framework */; };
 		88E3B49850504940DEAF3625 /* Pods_Sunshine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE32072F927F26406D9E996 /* Pods_Sunshine.framework */; };
 		89A7BDA64F99958F0E1A4C42 /* Pods_SunshineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBE2C1051624FCA0EBCE0D0 /* Pods_SunshineUITests.framework */; };
+		C467D99023115ADB0085C52A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467D98F23115ADB0085C52A /* DataController.swift */; };
+		C467D99223115CE40085C52A /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467D99123115CE40085C52A /* LocalStorage.swift */; };
 		C497B6C12308CA2100DB043C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497B6C02308CA2100DB043C /* AppDelegate.swift */; };
 		C497B6C32308CA2100DB043C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497B6C22308CA2100DB043C /* HomeViewController.swift */; };
 		C497B6C62308CA2100DB043C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C497B6C42308CA2100DB043C /* Main.storyboard */; };
@@ -65,6 +67,8 @@
 		6C53F5A3542192D10D8299AC /* Pods-SunshineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunshineTests.debug.xcconfig"; path = "Target Support Files/Pods-SunshineTests/Pods-SunshineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8AFC54EEC2D8C60A4CEAD88E /* Pods_SunshineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunshineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6D44A0F29EDC4E89143846 /* Pods-SunshineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunshineUITests.debug.xcconfig"; path = "Target Support Files/Pods-SunshineUITests/Pods-SunshineUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C467D98F23115ADB0085C52A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		C467D99123115CE40085C52A /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		C497B6BD2308CA2100DB043C /* Sunshine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunshine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C497B6C02308CA2100DB043C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C497B6C22308CA2100DB043C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 			children = (
 				C4DE3BE7230C3B1F00497BAE /* API */,
 				C497B6C72308CA2100DB043C /* Sunshine.xcdatamodeld */,
+				C467D98F23115ADB0085C52A /* DataController.swift */,
+				C467D99123115CE40085C52A /* LocalStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -582,8 +588,10 @@
 				C4C24D03230E972600F4CE05 /* WeatherView.swift in Sources */,
 				C4C24D1E230FEBC500F4CE05 /* Util.swift in Sources */,
 				C497B6C92308CA2100DB043C /* Sunshine.xcdatamodeld in Sources */,
+				C467D99023115ADB0085C52A /* DataController.swift in Sources */,
 				C4DE3BEB230C3BED00497BAE /* ApiCleint+Constants.swift in Sources */,
 				C4C24D18230EC3E300F4CE05 /* UIViewController+Extensions.swift in Sources */,
+				C467D99223115CE40085C52A /* LocalStorage.swift in Sources */,
 				C4C24D10230EB64E00F4CE05 /* ForcastPagerViewCell.swift in Sources */,
 				C4DE3BFA230C47F800497BAE /* Clouds.swift in Sources */,
 				C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */,

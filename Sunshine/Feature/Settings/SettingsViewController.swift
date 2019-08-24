@@ -10,6 +10,9 @@ import UIKit
 import ActionSheetPicker_3_0
 
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var locationLabel: SettingsItemVeiw!
+    @IBOutlet weak var unitLabel: SettingsItemVeiw!
+    @IBOutlet weak var notificationSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +21,14 @@ class SettingsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "#73767f")
+        
+        self.locationLabel.value = LocalStorage.preferredCityName ?? ApiClient.defaultCityName
+        self.unitLabel.value = LocalStorage.preferredUnit ?? ApiClient.defaultUnit
+        self.notificationSwitch.isOn = LocalStorage.isNotificationEnabled
     }
     
-    @IBAction func onToggleNotificationSwitch(_ sender: Any) {
+    @IBAction func onToggleNotificationSwitch(_ sender: UISwitch) {
+        LocalStorage.isNotificationEnabled = sender.isOn
     }
     
     @IBAction func onTapLocationBtn(_ sender: Any) {
@@ -34,7 +42,10 @@ class SettingsViewController: UIViewController {
         }
         
         let okAction  = UIAlertAction(title: "Ok", style: .default) { (action) in
-            
+            if let prefCityName = alert.textFields?[0].text{
+                LocalStorage.preferredCityName = prefCityName
+                self.locationLabel.value = prefCityName
+            }
         }
         
         
@@ -56,11 +67,13 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onTapUnitBtn(_ sender: Any) {
-        
-        ActionSheetStringPicker.show(withTitle: "Preffered Unit", rows: ["Metric", "Imperial"], initialSelection: 0, doneBlock: { picker, index, values in
-            print("values = \(values)")
-            print("indexes = \(index)")
-            print("picker = \(picker)")
+        let initialSelection  = LocalStorage.preferredUnit == "Metric" ? 0 : 1
+        ActionSheetStringPicker.show(withTitle: "Preferred Unit", rows: ["Metric", "Imperial"], initialSelection: initialSelection, doneBlock: { picker, index, value in
+            if let valueStr = value as? String{
+                LocalStorage.preferredUnit = valueStr
+                self.unitLabel.value = valueStr
+            }
+            
         }, cancel: { ActionMultipleStringCancelBlock in return }, origin: self.view)
         
     }

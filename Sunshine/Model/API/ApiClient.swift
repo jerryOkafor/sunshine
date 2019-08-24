@@ -15,12 +15,12 @@ import RxCocoa
 
 class ApiClient {
     
-    static func forcastByCityId(id:String) -> Observable<ForcastResponse> {
-        return request(ApiRouter.forcastByCityId(id: id))
+    static func forcastByCityName(cityName:String) -> Observable<ForcastResponse> {
+        return request(ApiRouter.forcastByCityName(id: cityName))
     }
     
     enum ApiRouter : URLRequestConvertible {
-        case forcastByCityId(id:String)
+        case forcastByCityName(id:String)
         /// Returns the encoding for the given endpoint route.
         private var encoding : ParameterEncoding {
             switch self {
@@ -47,7 +47,7 @@ class ApiClient {
         /// Returns the endpoint path that we append to the base url
         private var path : String {
             switch self {
-            case .forcastByCityId(let id) : return "forecast?id=\(id)&cnt=40&appid=\(ApiClient.appId)"
+            case .forcastByCityName(let cityName) : return "forecast?q=\(cityName)&cnt=40&appid=\(ApiClient.appId)"
                 
             }
         }

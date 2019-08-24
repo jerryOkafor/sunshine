@@ -23,11 +23,11 @@ class HomeViewModel {
         self.disposeBag = rxDisposeBag
     }
     
-    func forcastByCityId(cityId:String){
+    func forcastByCityName(cityId:String){
         
         self.forcastProgressEvent.accept(true)
         
-        ApiClient.forcastByCityId(id: cityId).observeOn(MainScheduler.instance)
+        ApiClient.forcastByCityName(cityName: cityId).observeOn(MainScheduler.instance)
             .subscribe(onNext:{[weak self]response in
                 guard let strongSelf = self else {return}
                 strongSelf.forcastProgressEvent.accept(false)

@@ -76,7 +76,7 @@ class SettingsItemVeiw: UIView {
         self.addSubview(iconImageView)
         self.iconImageView.snp.makeConstraints{make in
             make.left.equalToSuperview().offset(16)
-            make.width.height.equalTo(self.frame.height * 1/2)
+            make.width.height.equalTo(self.frame.height * 1/2.5)
             make.centerY.equalToSuperview()
         }
         

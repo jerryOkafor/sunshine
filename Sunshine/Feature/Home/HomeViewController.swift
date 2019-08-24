@@ -32,6 +32,8 @@ class GradientView: UIView {
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
+    var dataController : DataController!
+    
     private let vm  = HomeViewModel(rxDisposeBag: DisposeBag())
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     @IBOutlet weak var hourlyCollectionViewFlowlayout: UICollectionViewFlowLayout!
@@ -98,7 +100,7 @@ class HomeViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         //load forcast
-        vm.forcastByCityId(cityId: ApiClient.defaultCityId)
+        vm.forcastByCityName(cityId: ApiClient.defaultCityName)
 
     }
     
@@ -134,7 +136,7 @@ class HomeViewController: UIViewController {
     @objc
     private func refrsh(_ sender:UIBarButtonItem){
         //load forcast
-        vm.forcastByCityId(cityId: ApiClient.defaultCityId)
+        vm.forcastByCityName(cityId: ApiClient.defaultCityName)
     }
     
     @objc
