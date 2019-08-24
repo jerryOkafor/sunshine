@@ -21,85 +21,145 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkm-ij-NVd">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-TH-cuS">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MuB-M9-wE9">
                                         <rect key="frame" x="20" y="20" width="374" height="220"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XdH-8V-1ns">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v5V-Rf-jhM">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="220"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYQ-SA-yUD" customClass="WeatherVeiw" customModule="Sunshine" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="100"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ic_humidity"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Humidity"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="customCornerRadius">
-                                                                <real key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="value" value="39%"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLN-65-y1C">
+                                                        <rect key="frame" x="31" y="0.0" width="125" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="y7I-c6-HDf"/>
+                                                        </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5L-0A-PQL" customClass="WeatherVeiw" customModule="Sunshine" customModuleProvider="target">
-                                                        <rect key="frame" x="197" y="0.0" width="177" height="100"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ic_pressure"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Pressure"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="customCornerRadius">
-                                                                <real key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="value" value="09mmHg"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhy-i5-wdQ">
+                                                        <rect key="frame" x="48" y="50" width="91" height="60"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="60"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1b-r7-exi">
+                                                        <rect key="frame" x="71" y="130" width="45.5" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="CmU-IU-nmZ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqY-Ot-nbG">
+                                                        <rect key="frame" x="31.5" y="190" width="124.5" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="VmO-Fr-oqJ"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ymA-hm-VUz">
-                                                <rect key="frame" x="0.0" y="120" width="374" height="100"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Pir-Ch-gZ9">
+                                                <rect key="frame" x="187" y="0.0" width="187" height="220"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNv-9J-gLp" customClass="WeatherVeiw" customModule="Sunshine" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="100"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ic_uv_index"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="UV Index"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="customCornerRadius">
-                                                                <real key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="value" value="69"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3X-Ps-XRe" customClass="WeatherVeiw" customModule="Sunshine" customModuleProvider="target">
-                                                        <rect key="frame" x="197" y="0.0" width="177" height="100"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ic_visibility"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Visibility"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="customCornerRadius">
-                                                                <real key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="value" value="15"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="uxC-JH-uH7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="120"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="120" id="Of7-TC-4d5"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yf-Ar-JYe">
+                                                        <rect key="frame" x="0.0" y="190" width="187" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="WVy-Mb-sZ9"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="220" id="93B-BP-Z8T"/>
+                                            <constraint firstAttribute="height" constant="220" id="6Eg-cc-mOR"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-TH-cuS">
+                                        <rect key="frame" x="20" y="530" width="374" height="220"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYQ-SA-yUD" customClass="WeatherVeiw" customModule="Sunshine" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ic_humidity"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Humidity"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customCornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="value" value="39%"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5L-0A-PQL" customClass="WeatherVeiw" customModule="Sunshine" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="120" width="374" height="100"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ic_pressure"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Pressure"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customCornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="value" value="09mmHg"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="HQJ-eS-MyU"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BVd-t7-Ld0">
+                                        <rect key="frame" x="0.0" y="758" width="414" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPw-tI-LYH">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="fEE-cf-7FK"/>
+                                                    <constraint firstAttribute="height" constant="60" id="fNY-Kb-TFw"/>
+                                                </constraints>
+                                                <state key="normal" image="ic_arrow_left"/>
+                                                <connections>
+                                                    <action selector="onPrevBtn:" destination="Y1O-6v-LOm" eventType="touchUpInside" id="SG6-by-oyM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYr-EY-hnG">
+                                                <rect key="frame" x="354" y="0.0" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="XK2-gV-lPo"/>
+                                                    <constraint firstAttribute="height" constant="60" id="p8f-Q1-RX5"/>
+                                                </constraints>
+                                                <state key="normal" image="ic_arrow_right"/>
+                                                <connections>
+                                                    <action selector="onNextBtn:" destination="Y1O-6v-LOm" eventType="touchUpInside" id="Kv1-A0-zKJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="YLz-wd-KNB"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="OOy-TH-cuS" firstAttribute="leading" secondItem="Zkm-ij-NVd" secondAttribute="leading" constant="20" id="8WS-g9-I18"/>
-                                    <constraint firstItem="OOy-TH-cuS" firstAttribute="top" secondItem="Zkm-ij-NVd" secondAttribute="top" constant="20" id="Jx1-jz-Ajs"/>
-                                    <constraint firstAttribute="trailing" secondItem="OOy-TH-cuS" secondAttribute="trailing" constant="20" id="TGZ-0i-YPo"/>
+                                    <constraint firstAttribute="trailing" secondItem="BVd-t7-Ld0" secondAttribute="trailing" id="BGa-rw-woM"/>
+                                    <constraint firstItem="MuB-M9-wE9" firstAttribute="leading" secondItem="Zkm-ij-NVd" secondAttribute="leading" constant="20" id="C2n-Qh-VYf"/>
+                                    <constraint firstAttribute="trailing" secondItem="MuB-M9-wE9" secondAttribute="trailing" constant="20" id="QCH-5q-onT"/>
+                                    <constraint firstAttribute="bottom" secondItem="BVd-t7-Ld0" secondAttribute="bottom" id="Tbz-rb-Igu"/>
+                                    <constraint firstAttribute="trailing" secondItem="OOy-TH-cuS" secondAttribute="trailing" constant="20" id="Tzh-nc-o4q"/>
+                                    <constraint firstItem="OOy-TH-cuS" firstAttribute="leading" secondItem="Zkm-ij-NVd" secondAttribute="leading" constant="20" id="ZGK-lV-6Rp"/>
+                                    <constraint firstItem="BVd-t7-Ld0" firstAttribute="leading" secondItem="Zkm-ij-NVd" secondAttribute="leading" id="arC-rh-XVq"/>
+                                    <constraint firstItem="MuB-M9-wE9" firstAttribute="top" secondItem="Zkm-ij-NVd" secondAttribute="top" constant="20" id="b3Z-Eb-oLF"/>
+                                    <constraint firstItem="BVd-t7-Ld0" firstAttribute="top" secondItem="OOy-TH-cuS" secondAttribute="bottom" constant="8" id="yy6-Ws-isR"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -112,10 +172,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qtA-dw-SaM"/>
                     </view>
+                    <connections>
+                        <outlet property="descLabel" destination="4Yf-Ar-JYe" id="lDx-jC-cww"/>
+                        <outlet property="humidityLabel" destination="hYQ-SA-yUD" id="K7S-rg-Oaw"/>
+                        <outlet property="maxTempLabel" destination="bhy-i5-wdQ" id="3GJ-f2-fXl"/>
+                        <outlet property="minTempLabel" destination="c1b-r7-exi" id="rro-O3-YVD"/>
+                        <outlet property="pressureLabel" destination="U5L-0A-PQL" id="jxb-D3-RXi"/>
+                        <outlet property="temIconImageView" destination="uxC-JH-uH7" id="rqi-Ad-Wo7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZ7-i2-GrW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2290" y="-565"/>
+            <point key="canvasLocation" x="2289.8550724637685" y="-565.17857142857144"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="pVp-6L-BD2">
@@ -124,11 +192,107 @@
                     <view key="view" contentMode="scaleToFill" id="0i1-nd-ueQ" customClass="GradientView" customModule="Sunshine" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egs-U7-m4e" customClass="SettingsItemVeiw" customModule="Sunshine" customModuleProvider="target">
+                                <rect key="frame" x="20" y="64" width="374" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="WUv-dN-9db">
+                                        <rect key="frame" x="334" y="28" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="jQ7-pM-g6b"/>
+                                            <constraint firstAttribute="height" constant="24" id="pAI-1p-mqG"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="WUv-dN-9db" firstAttribute="centerY" secondItem="Egs-U7-m4e" secondAttribute="centerY" id="M0J-rM-fJa"/>
+                                    <constraint firstAttribute="trailing" secondItem="WUv-dN-9db" secondAttribute="trailing" constant="16" id="SgK-Ba-upc"/>
+                                    <constraint firstAttribute="height" constant="80" id="mlg-pP-1Bj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="icMapPin"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Location"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="value" value="410210"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xEm-kG-InF" appends="YES" id="Y5S-S9-Wbd"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHL-o3-oM3" customClass="SettingsItemVeiw" customModule="Sunshine" customModuleProvider="target">
+                                <rect key="frame" x="20" y="164" width="374" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="ydw-sc-UAT">
+                                        <rect key="frame" x="334" y="28" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="wmt-x7-pbe"/>
+                                            <constraint firstAttribute="height" constant="24" id="wnr-9L-utk"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ydw-sc-UAT" secondAttribute="trailing" constant="16" id="7Fa-0O-Zc4"/>
+                                    <constraint firstItem="ydw-sc-UAT" firstAttribute="centerY" secondItem="iHL-o3-oM3" secondAttribute="centerY" id="dvm-xa-JqC"/>
+                                    <constraint firstAttribute="height" constant="80" id="vhi-fR-SAt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="icThermometer"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Temperature Unit"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="value" value="Metric"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MtR-E0-CwH" appends="YES" id="Sbs-Ss-cQY"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhT-Wa-Ghn" customClass="SettingsItemVeiw" customModule="Sunshine" customModuleProvider="target">
+                                <rect key="frame" x="20" y="264" width="374" height="80"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GyA-nG-rtc">
+                                        <rect key="frame" x="305" y="24.5" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.28627450980392155" green="0.3529411764705882" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="onToggleNotificationSwitch:" destination="UeR-b3-LWl" eventType="valueChanged" id="zAO-Q5-XFo"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="8Pb-Ch-ICR"/>
+                                    <constraint firstItem="GyA-nG-rtc" firstAttribute="centerY" secondItem="jhT-Wa-Ghn" secondAttribute="centerY" id="RZ6-ob-86t"/>
+                                    <constraint firstAttribute="trailing" secondItem="GyA-nG-rtc" secondAttribute="trailing" constant="20" id="v9z-vz-3NW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="icNotification"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Notifications"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iHL-o3-oM3" firstAttribute="top" secondItem="Egs-U7-m4e" secondAttribute="bottom" constant="20" id="9O4-DI-sus"/>
+                            <constraint firstItem="iUn-d5-RUo" firstAttribute="trailing" secondItem="Egs-U7-m4e" secondAttribute="trailing" constant="20" id="NAF-q0-NSX"/>
+                            <constraint firstItem="iHL-o3-oM3" firstAttribute="leading" secondItem="iUn-d5-RUo" secondAttribute="leading" constant="20" id="XA8-I7-ay7"/>
+                            <constraint firstItem="iUn-d5-RUo" firstAttribute="trailing" secondItem="iHL-o3-oM3" secondAttribute="trailing" constant="20" id="Xmi-70-HJK"/>
+                            <constraint firstItem="jhT-Wa-Ghn" firstAttribute="top" secondItem="iHL-o3-oM3" secondAttribute="bottom" constant="20" id="XxJ-br-0N7"/>
+                            <constraint firstItem="iUn-d5-RUo" firstAttribute="trailing" secondItem="jhT-Wa-Ghn" secondAttribute="trailing" constant="20" id="d0K-sp-xxr"/>
+                            <constraint firstItem="Egs-U7-m4e" firstAttribute="leading" secondItem="iUn-d5-RUo" secondAttribute="leading" constant="20" id="jnB-qp-wVo"/>
+                            <constraint firstItem="jhT-Wa-Ghn" firstAttribute="leading" secondItem="iUn-d5-RUo" secondAttribute="leading" constant="20" id="tX0-8r-DOG"/>
+                            <constraint firstItem="Egs-U7-m4e" firstAttribute="top" secondItem="iUn-d5-RUo" secondAttribute="top" constant="20" id="uXL-78-sDK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iUn-d5-RUo"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RS-No-0r1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xEm-kG-InF">
+                    <connections>
+                        <action selector="onTapLocationBtn:" destination="UeR-b3-LWl" id="xTW-Iz-IAX"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="MtR-E0-CwH">
+                    <connections>
+                        <action selector="onTapUnitBtn:" destination="UeR-b3-LWl" id="XmE-ML-9Sp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3346" y="-565"/>
         </scene>
@@ -281,10 +445,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icMapPin" width="20" height="26"/>
+        <image name="icNotification" width="27" height="19"/>
+        <image name="icThermometer" width="21" height="34"/>
+        <image name="ic_arrow_left" width="8" height="12"/>
+        <image name="ic_arrow_right" width="8" height="12"/>
         <image name="ic_humidity" width="15" height="21"/>
         <image name="ic_logo" width="108" height="127"/>
         <image name="ic_pressure" width="21" height="21"/>
-        <image name="ic_uv_index" width="21" height="21"/>
-        <image name="ic_visibility" width="23" height="15"/>
     </resources>
 </document>

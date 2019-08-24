@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 19 images.
   struct image {
     /// Image `icClear`.
     static let icClear = Rswift.ImageResource(bundle: R.hostingBundle, name: "icClear")
@@ -28,12 +28,22 @@ struct R: Rswift.Validatable {
     static let icLightClouds = Rswift.ImageResource(bundle: R.hostingBundle, name: "icLightClouds")
     /// Image `icLightRain`.
     static let icLightRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "icLightRain")
+    /// Image `icMapPin`.
+    static let icMapPin = Rswift.ImageResource(bundle: R.hostingBundle, name: "icMapPin")
+    /// Image `icNotification`.
+    static let icNotification = Rswift.ImageResource(bundle: R.hostingBundle, name: "icNotification")
     /// Image `icRain`.
     static let icRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "icRain")
     /// Image `icSnow`.
     static let icSnow = Rswift.ImageResource(bundle: R.hostingBundle, name: "icSnow")
     /// Image `icStorm`.
     static let icStorm = Rswift.ImageResource(bundle: R.hostingBundle, name: "icStorm")
+    /// Image `icThermometer`.
+    static let icThermometer = Rswift.ImageResource(bundle: R.hostingBundle, name: "icThermometer")
+    /// Image `ic_arrow_left`.
+    static let ic_arrow_left = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_arrow_left")
+    /// Image `ic_arrow_right`.
+    static let ic_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_arrow_right")
     /// Image `ic_humidity`.
     static let ic_humidity = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_humidity")
     /// Image `ic_logo`.
@@ -72,6 +82,16 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.icLightRain, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "icMapPin", bundle: ..., traitCollection: ...)`
+    static func icMapPin(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icMapPin, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icNotification", bundle: ..., traitCollection: ...)`
+    static func icNotification(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icNotification, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "icRain", bundle: ..., traitCollection: ...)`
     static func icRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icRain, compatibleWith: traitCollection)
@@ -85,6 +105,21 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icStorm", bundle: ..., traitCollection: ...)`
     static func icStorm(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icStorm, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icThermometer", bundle: ..., traitCollection: ...)`
+    static func icThermometer(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icThermometer, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "ic_arrow_left", bundle: ..., traitCollection: ...)`
+    static func ic_arrow_left(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_arrow_left, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "ic_arrow_right", bundle: ..., traitCollection: ...)`
+    static func ic_arrow_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_arrow_right, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "ic_humidity", bundle: ..., traitCollection: ...)`
@@ -258,11 +293,14 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "icMapPin", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icMapPin' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icNotification", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icNotification' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icThermometer", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icThermometer' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_arrow_left", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_arrow_left' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_arrow_right' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ic_humidity", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_humidity' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ic_logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_logo' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ic_pressure", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_pressure' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_uv_index", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_uv_index' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_visibility", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_visibility' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.main().detailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailViewController' could not be loaded from storyboard 'Main' as 'DetailViewController'.") }

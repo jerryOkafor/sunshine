@@ -29,6 +29,7 @@
 		C4C24D18230EC3E300F4CE05 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */; };
 		C4C24D1B230F459400F4CE05 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D1A230F459400F4CE05 /* DetailViewController.swift */; };
 		C4C24D1E230FEBC500F4CE05 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D1D230FEBC500F4CE05 /* Util.swift */; };
+		C4C24D2023112B5C00F4CE05 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C24D1F23112B5C00F4CE05 /* SettingItemView.swift */; };
 		C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BE8230C3B3000497BAE /* ApiClient.swift */; };
 		C4DE3BEB230C3BED00497BAE /* ApiCleint+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */; };
 		C4DE3BEE230C3F4200497BAE /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */; };
@@ -89,6 +90,7 @@
 		C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C4C24D1A230F459400F4CE05 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C4C24D1D230FEBC500F4CE05 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		C4C24D1F23112B5C00F4CE05 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		C4DE3BE8230C3B3000497BAE /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		C4DE3BEA230C3BED00497BAE /* ApiCleint+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiCleint+Constants.swift"; sourceTree = "<group>"; };
 		C4DE3BED230C3F4200497BAE /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				C4C24D02230E972600F4CE05 /* WeatherView.swift */,
+				C4C24D1F23112B5C00F4CE05 /* SettingItemView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */,
 				C4C24CFB230DEB3700F4CE05 /* SettingsViewController.swift in Sources */,
 				C4C24CFD230DEC0900F4CE05 /* UIColor+Extensions.swift in Sources */,
+				C4C24D2023112B5C00F4CE05 /* SettingItemView.swift in Sources */,
 				C4DE3BEE230C3F4200497BAE /* Dictionary+Extensions.swift in Sources */,
 				C4DE3BFD230C47F800497BAE /* Wind.swift in Sources */,
 			);

@@ -19,6 +19,15 @@ class SettingsViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "#73767f")
     }
     
+    @IBAction func onToggleNotificationSwitch(_ sender: Any) {
+    }
+    
+    @IBAction func onTapLocationBtn(_ sender: Any) {
+    }
+    
+    @IBAction func onTapUnitBtn(_ sender: Any) {
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

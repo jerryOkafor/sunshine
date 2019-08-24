@@ -49,6 +49,7 @@ class HomeViewController: UIViewController {
     
     private var forcasts = [(String,[ForcastItem])]()
     private var hourlyForcast = [ForcastItem]()
+    private var city:CityItem? = nil
     
     
     override func viewDidLoad() {
@@ -82,6 +83,7 @@ class HomeViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         vm.forcasResponseEvent.bind{response in
+            self.city = response.city
             self.navigationItem.title = response.city.name
             
             self.forcasts = Dictionary(grouping: response.list, by: { (element: ForcastItem) in
@@ -132,7 +134,7 @@ class HomeViewController: UIViewController {
     @objc
     private func refrsh(_ sender:UIBarButtonItem){
         //load forcast
-        vm.forcastByCityId(cityId: "")
+        vm.forcastByCityId(cityId: ApiClient.defaultCityId)
     }
     
     @objc
@@ -163,12 +165,25 @@ extension HomeViewController : FSPagerViewDataSource{
         
         cell.contentView.addGradient(self.getColorForIndex(index))
         
-        let forcast = self.forcasts[index]
-        
-        cell.tempLabel.text = "32°"
+        let forcast:(date:String,forcasts:[ForcastItem]) = self.forcasts[index]
         
         cell.nameLabel.text = Util.getDayOfWeekText(forcast.0,readFormat:"yyyy-MM-dd")
         cell.dateLabel.text = Util.parseDate(forcast.0,readFormat: "yyyy-MM-dd",displayFormat: "MMM d, yyyy")
+        
+        let sumIds = forcast.forcasts.reduce(0) { (result, item) -> Int in
+            return item.weather[0].id + result
+        }
+        
+        let averageWeatherId = sumIds/forcast.forcasts.count
+        cell.iconImageView.image = Util.getImageForWeatherCondition(weatherId: averageWeatherId) ?? Util.getImageForWeatherCondition(weatherId:forcast.forcasts[0].weather[0].id)
+        
+        let sumTemp = forcast.forcasts.reduce(0.0) { (result, item) -> Double in
+            return item.main.temp + result
+        }
+        
+        let averageTemp = sumTemp / Double(forcast.forcasts.count)
+        cell.tempLabel.text = Util.formatTemperature(temp: averageTemp)
+        
         
         return cell
     }
@@ -217,19 +232,11 @@ extension HomeViewController : UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dailyItemViewCell.identifier, for: indexPath) as! DailyItemViewCell
         
         let forcastHour = self.hourlyForcast[indexPath.row]
-            
-        cell.timeLabel.text = Util.parseDate(forcastHour.dateString,displayFormat:"hha")?.lowercased()
+        
+        cell.timeLabel.text = Util.parseDate(forcastHour.dateString,displayFormat:"ha")?.lowercased()
         cell.tempLabel.text = "22°"
         cell.iconImageView.image =  Util.getImageForWeatherCondition(weatherId: forcastHour.weather[0].id)
         cell.tempLabel.text = Util.formatTemperature(temp: forcastHour.main.temp)
-        cell.contentView.backgroundColor = .clear
-        cell.contentView.isUserInteractionEnabled = true
-        
-        
-//        else{
-//            cell.contentView.backgroundColor = .gray
-//            cell.contentView.isUserInteractionEnabled = false
-//        }
         return cell
     }
     
@@ -241,8 +248,11 @@ extension HomeViewController : UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let settingsVC = R.storyboard.main.detailViewController()!
-        self.navigationController?.pushViewController(settingsVC, animated: true)
+        let detailsVC = R.storyboard.main.detailViewController()!
+        detailsVC.city = self.city!
+        detailsVC.forecasts = self.hourlyForcast
+        detailsVC.hourIndex = indexPath.row
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
 

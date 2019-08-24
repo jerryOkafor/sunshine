@@ -41,7 +41,7 @@ class Util {
         }else if myCalendar.isDateInTomorrow(date){
             return "Tomorrow"
         }else{
-            let displayDateFormatter = DateFormatter().then{$0.dateFormat = "EEEE so"}
+            let displayDateFormatter = DateFormatter().then{$0.dateFormat = "EEEE"}
             return  displayDateFormatter.string(from: date)
         }
         
@@ -56,7 +56,7 @@ class Util {
         return "\(Int(temp))°"
     }
     
-    public static func getImageForWeatherCondition(weatherId : Int) -> UIImage {
+    public static func getImageForWeatherCondition(weatherId : Int) -> UIImage? {
         // Based on weather code data found at:
         // http://bugs.openweathermap.org/projects/api/wiki/Weather_Condition_Codes
         if (weatherId >= 200 && weatherId <= 232) {
@@ -82,6 +82,6 @@ class Util {
         } else if (weatherId >= 802 && weatherId <= 804) {
             return R.image.icCloudy()!;
         }
-        return R.image.ic_logo()!;
+        return nil
     }
 }

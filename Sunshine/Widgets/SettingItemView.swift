@@ -1,8 +1,8 @@
 //
-//  WeatherView.swift
+//  SettingItemView.swift
 //  Sunshine
 //
-//  Created by Jerry Hanks on 22/08/2019.
+//  Created by Jerry Hanks on 24/08/2019.
 //  Copyright © 2019 Jerry. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 
-class WeatherVeiw: UIView {
+class SettingsItemVeiw: UIView {
     
     @IBInspectable var  icon : UIImage?{
         set(value){iconImageView.image = value}
@@ -38,14 +38,14 @@ class WeatherVeiw: UIView {
     
     internal lazy var titlelabel : UILabel = {
         return UILabel().then{
-            $0.font = UIFont(name: "HelveticaNeue-Bold", size: 14)!
+            $0.font = UIFont(name: "HelveticaNeue-Bold", size: 16)!
             $0.textColor = UIColor(hex: "#ffffff")
         }
     }()
     
     internal lazy var valueLabel : UILabel = {
         return UILabel().then{
-            $0.font = UIFont(name: "HelveticaNeue-CondensedBold", size: 26)!
+            $0.font = UIFont(name: "HelveticaNeue-CondensedBold", size: 14)!
             $0.textColor = UIColor(hex: "#ffffff")
         }
     }()
@@ -76,24 +76,29 @@ class WeatherVeiw: UIView {
         self.addSubview(iconImageView)
         self.iconImageView.snp.makeConstraints{make in
             make.left.equalToSuperview().offset(16)
-            make.width.height.equalTo(self.frame.height * 1/3)
-            make.top.equalToSuperview().offset(24)
+            make.width.height.equalTo(self.frame.height * 1/2)
+            make.centerY.equalToSuperview()
         }
         
         self.iconImageView.contentMode = .scaleAspectFit
         
-        //add title label
-        self.addSubview(titlelabel)
-        self.titlelabel.snp.makeConstraints{make in
-            make.top.equalTo(iconImageView.snp_bottom).offset(16)
-            make.left.equalToSuperview().offset(16)
+        let stackView = UIStackView().then{
+            $0.alignment = .fill
+            $0.axis = .vertical
+            $0.distribution = .equalSpacing
+            $0.spacing = 8
         }
         
-        self.addSubview(valueLabel)
-        self.valueLabel.snp.makeConstraints{make in
-            make.top.equalToSuperview().offset(20)
-            make.right.equalToSuperview().inset(16)
+        //add title label
+        self.addSubview(stackView)
+        stackView.snp.makeConstraints{make in
+            make.left.equalTo(iconImageView.snp_right).offset(16)
+            make.width.equalTo((self.frame.width/5) * 3)
+            make.centerY.equalToSuperview()
         }
+        
+        stackView.addArrangedSubview(titlelabel)
+        stackView.addArrangedSubview(valueLabel)
     }
 }
 
