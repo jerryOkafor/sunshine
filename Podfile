@@ -20,6 +20,7 @@ target 'Sunshine' do
   pod 'FSPagerView'
   pod 'R.swift'
   pod 'Then'
+  pod 'ActionSheetPicker-3.0', '~> 2.3.0'
 
   target 'SunshineTests' do
     inherit! :search_paths

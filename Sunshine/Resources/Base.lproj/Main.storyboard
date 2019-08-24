@@ -197,10 +197,10 @@
                                 <rect key="frame" x="20" y="64" width="374" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="WUv-dN-9db">
-                                        <rect key="frame" x="334" y="28" width="24" height="24"/>
+                                        <rect key="frame" x="342" y="32" width="16" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="jQ7-pM-g6b"/>
-                                            <constraint firstAttribute="height" constant="24" id="pAI-1p-mqG"/>
+                                            <constraint firstAttribute="width" constant="16" id="jQ7-pM-g6b"/>
+                                            <constraint firstAttribute="height" constant="16" id="pAI-1p-mqG"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -223,10 +223,10 @@
                                 <rect key="frame" x="20" y="164" width="374" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="ydw-sc-UAT">
-                                        <rect key="frame" x="334" y="28" width="24" height="24"/>
+                                        <rect key="frame" x="342" y="32" width="16" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="wmt-x7-pbe"/>
-                                            <constraint firstAttribute="height" constant="24" id="wnr-9L-utk"/>
+                                            <constraint firstAttribute="width" constant="16" id="wmt-x7-pbe"/>
+                                            <constraint firstAttribute="height" constant="16" id="wnr-9L-utk"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
