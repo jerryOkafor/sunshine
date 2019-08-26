@@ -51,11 +51,17 @@ class HomeViewController: UIViewController {
     }
     
     @IBOutlet weak var pagerView: FSPagerView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var forcasts = [(String,[Forcast])]()
     private var hourlyForcast = [Forcast]()
     private var city:City? = nil
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var initiallyLoaded = false
+    
+    private var preferredCityName:String{
+        get{return LocalStorage.preferredCityName ?? ApiClient.defaultCityName}
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +108,6 @@ class HomeViewController: UIViewController {
             response.list.forEach{
                 let forecast =  Forcast(context: self.dataController.backgroundContext)
                 forecast.date = $0.dateString
-                forecast.city = city
                 forecast.dateMilli = $0.dateMilli
                 
                 let summary = Summary(context: self.dataController.backgroundContext)
@@ -123,7 +128,9 @@ class HomeViewController: UIViewController {
                 weather.icon = weatherItem.icon
                 
                 forecast.weather = weather
+                forecast.city = city
             }
+            
             
             do{
                 try self.dataController.backgroundContext.save()
@@ -141,34 +148,41 @@ class HomeViewController: UIViewController {
     
     private func setUpFetchResulController(){
         let fetchRequest:NSFetchRequest<City> = City.fetchRequest()
-        
-        let cityName = LocalStorage.preferredCityName ?? ApiClient.defaultCityName
-        
-        let predicate = NSPredicate(format: "name == %@",cityName)
+        let predicate = NSPredicate(format: "name ==[c] %@",preferredCityName)
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.predicate = predicate
         
-        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "cities")
+        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchResultController.delegate = self
         
-        //try to fetch a city and forcats
         do{
-            
             try fetchResultController.performFetch()
             
-            if let count = fetchResultController?.fetchedObjects?.count, count > 0{
-                let savedCity  = fetchResultController.fetchedObjects![0]
-                self.city = savedCity
-                self.bindFetchedCityAndForcast(savedCity)
-            }else{
-                //load forcast
-                vm.forcastByCityName(cityName: cityName)
-            }
+            self.selectAndBindCityAndForcast()
         }catch{
             fatalError("Could not peform fetch result: \(error)")
         }
+    }
+    
+
+    
+    private func selectAndBindCityAndForcast(){
+        
+        if let fetchedObjects = fetchResultController?.fetchedObjects{
+            if let savedCity  = fetchedObjects.first(where: {$0.name == preferredCityName}){
+                self.city = savedCity
+                self.bindFetchedCityAndForcast(savedCity)
+            }else{
+                vm.forcastByCityName(cityName: preferredCityName)
+            }
+        }else{
+            vm.forcastByCityName(cityName: preferredCityName)
+            self.initiallyLoaded  = true
+        }
+        
+        
     }
     
     
@@ -177,6 +191,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.title = city.name
         
         let allObjects =  (city.forcast!.allObjects as! [Forcast])
+        
         self.forcasts = Dictionary(grouping:allObjects, by: { (element: Forcast) in
             return  Util.parseDate(element.date!,displayFormat: "yyyy-MM-dd")!
         }).sorted(by: { $0.0 < $1.0 })
@@ -184,38 +199,15 @@ class HomeViewController: UIViewController {
         self.pagerView.reloadData()
         self.pagerControl.numberOfPages  = self.forcasts.count
         
-        self.loadHourlyForcast(forIndex: 0)
+        self.loadHourlyForcast(forIndex: self.pagerView.currentIndex)
     }
     
-    private func clearDataAndReload(){
-        //clear data
-        self.forcasts.removeAll()
-        self.hourlyForcast.removeAll()
-        
-        
-        
-        //clear data from coredata
-        if let savedCity =  self.city{
-            self.dataController.viewContext.delete(savedCity)
-        }
-        
-        //reload hourly forcast collection view
-        self.hourlyCollectionView.reloadData()
-        
-        //reload dialy forcast collection view
-        self.pagerView.reloadData()
-        self.pagerControl.numberOfPages  = self.forcasts.count
-        
-        
-        //get new forcast from api
-        if let prefCityName = LocalStorage.preferredCityName{
-            vm.forcastByCityName(cityName:prefCityName)
-        }
-    }
     
     @objc
     private func citNamePrefChange(_ notification:Notification){
-        self.clearDataAndReload()
+    
+        //call this so that coredata can reload new data
+        self.setUpFetchResulController()
     }
     
     @objc
@@ -259,7 +251,23 @@ class HomeViewController: UIViewController {
     
     @objc
     private func refrsh(_ sender:UIBarButtonItem){
-        self.clearDataAndReload()
+        
+        //clear data from coredata
+        if let savedCity =  self.city{
+            self.dataController.viewContext.delete(savedCity)
+            self.city = nil
+            
+            //try to save the context
+            do{
+                try self.dataController.viewContext.save()
+            }catch{
+                print("Error deleting : \(error)")
+            }
+        }
+        
+        //get new forcast from api
+        vm.forcastByCityName(cityName:preferredCityName)
+
     }
     
     @objc
@@ -343,7 +351,6 @@ extension HomeViewController : FSPagerViewDelegate{
         self.pagerControl.currentPage = targetIndex
         self.loadHourlyForcast(forIndex: targetIndex)
     }
-    
 }
 
 
@@ -383,15 +390,31 @@ extension HomeViewController : UICollectionViewDelegate{
 
 //DataController Delegate
 extension HomeViewController : NSFetchedResultsControllerDelegate{
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         guard let city  = anObject as? City else {return}
-        
+        self.city = city
+
         switch type {
-        case .insert:
+        case .insert,.update:
             self.bindFetchedCityAndForcast(city)
+            
             break
+        case .delete:
+            //clear data
+            self.forcasts.removeAll(keepingCapacity: false)
+            self.hourlyForcast.removeAll(keepingCapacity: false)
+            
+            //reload hourly forcast collection view
+            self.hourlyCollectionView.reloadData()
+            
+            //reload dialy forcast collection view
+            self.pagerView.reloadData()
+            self.pagerControl.numberOfPages  = self.forcasts.count
+            
+            break
+            
         default:
             break
         }

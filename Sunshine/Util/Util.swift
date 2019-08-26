@@ -50,7 +50,8 @@ class Util {
     public static func formatTemperature(temp : Double) -> String{
         
         var temp = temp
-        if let unit = LocalStorage.preferredUnit,unit == "Metric"{
+        let unit = LocalStorage.preferredUnit ?? ApiClient.defaultUnit
+        if unit == "Metric"{
             temp = temp - 273.15
         }else{
             temp = (temp * 1.8) + 32

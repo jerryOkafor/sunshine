@@ -7,20 +7,25 @@
         <attribute name="sunrise" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sunset" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timezone" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="city" inverseEntity="Coordinate" syncable="YES"/>
+        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" syncable="YES"/>
         <relationship name="forcast" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Forcast" inverseName="city" inverseEntity="Forcast" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Coordinate" representedClassName="Coordinate" syncable="YES" codeGenerationType="class">
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lng" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="coordinate" inverseEntity="City" syncable="YES"/>
     </entity>
     <entity name="Forcast" representedClassName="Forcast" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateMilli" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="City" inverseName="forcast" inverseEntity="City" syncable="YES"/>
-        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Summary" inverseName="forcast" inverseEntity="Summary" syncable="YES"/>
-        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Weather" inverseName="forcast" inverseEntity="Weather" syncable="YES"/>
+        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Summary" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Weather" syncable="YES"/>
     </entity>
     <entity name="Summary" representedClassName="Summary" syncable="YES" codeGenerationType="class">
         <attribute name="groundLevel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -30,20 +35,18 @@
         <attribute name="pressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="seaLevel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="forcast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Forcast" inverseName="summary" inverseEntity="Forcast" syncable="YES"/>
     </entity>
     <entity name="Weather" representedClassName="Weather" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="main" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="forcast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Forcast" inverseName="weather" inverseEntity="Forcast" syncable="YES"/>
     </entity>
     <elements>
-        <element name="City" positionX="-270.96484375" positionY="-29.296875" width="128" height="165"/>
-        <element name="Coordinate" positionX="-206.5390625" positionY="-259.83984375" width="128" height="90"/>
-        <element name="Forcast" positionX="-97.90234375" positionY="-165.1875" width="128" height="120"/>
-        <element name="Summary" positionX="75.0859375" positionY="-264.71875" width="128" height="165"/>
-        <element name="Weather" positionX="73.17578125" positionY="-43.0234375" width="128" height="120"/>
+        <element name="City" positionX="-270.53125" positionY="-55.5234375" width="128" height="163"/>
+        <element name="Coordinate" positionX="-169.26171875" positionY="-301.46484375" width="128" height="73"/>
+        <element name="Forcast" positionX="-97.90234375" positionY="-165.1875" width="128" height="118"/>
+        <element name="Summary" positionX="75.0859375" positionY="-264.71875" width="128" height="150"/>
+        <element name="Weather" positionX="73.17578125" positionY="-43.0234375" width="128" height="105"/>
     </elements>
 </model>
