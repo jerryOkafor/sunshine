@@ -413,13 +413,22 @@
                                             <constraint firstAttribute="height" constant="320" id="VG4-jc-RpC"/>
                                         </constraints>
                                     </view>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Ex6-8F-WSX">
+                                        <rect key="frame" x="197" y="377" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="HSu-AS-6fJ"/>
+                                            <constraint firstAttribute="height" constant="20" id="V0L-wL-IIX"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1G7-N3-WMC" secondAttribute="trailing" id="7lu-ao-OFn"/>
+                                    <constraint firstItem="Ex6-8F-WSX" firstAttribute="centerY" secondItem="2UB-8X-fR2" secondAttribute="centerY" id="Dhx-o2-ZUG"/>
                                     <constraint firstAttribute="trailing" secondItem="IhQ-SH-LeP" secondAttribute="trailing" id="IzQ-6H-3q8"/>
                                     <constraint firstItem="IhQ-SH-LeP" firstAttribute="top" secondItem="1G7-N3-WMC" secondAttribute="bottom" constant="20" id="Sgy-8t-IZg"/>
                                     <constraint firstItem="1G7-N3-WMC" firstAttribute="leading" secondItem="2UB-8X-fR2" secondAttribute="leading" id="UaD-6f-3hx"/>
                                     <constraint firstItem="YTm-5h-5I0" firstAttribute="leading" secondItem="2UB-8X-fR2" secondAttribute="leading" id="ZqS-ht-thY"/>
+                                    <constraint firstItem="Ex6-8F-WSX" firstAttribute="centerX" secondItem="2UB-8X-fR2" secondAttribute="centerX" id="eSW-LQ-wpH"/>
                                     <constraint firstItem="YTm-5h-5I0" firstAttribute="top" secondItem="2UB-8X-fR2" secondAttribute="top" constant="20" id="lBy-1f-g1Z"/>
                                     <constraint firstItem="IhQ-SH-LeP" firstAttribute="leading" secondItem="2UB-8X-fR2" secondAttribute="leading" id="ncP-TW-2j7"/>
                                     <constraint firstAttribute="bottom" secondItem="IhQ-SH-LeP" secondAttribute="bottom" id="tIz-tu-rdY"/>
@@ -438,6 +447,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sunshine" id="2u2-MT-sB7"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Ex6-8F-WSX" id="709-s8-8kv"/>
                         <outlet property="hourlyCollectionView" destination="YTm-5h-5I0" id="FH5-Vf-JQw"/>
                         <outlet property="hourlyCollectionViewFlowlayout" destination="dgm-lY-PUQ" id="Bfq-K1-mLo"/>
                         <outlet property="pagerControl" destination="1G7-N3-WMC" id="Mkw-xz-XEm"/>

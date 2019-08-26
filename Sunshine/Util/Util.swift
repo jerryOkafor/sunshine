@@ -47,10 +47,13 @@ class Util {
         
     }
     
-    public static func formatTemperature(isMetric : Bool = true, temp : Double) -> String{
+    public static func formatTemperature(temp : Double) -> String{
+        
         var temp = temp
-        if isMetric{
-            temp = temp - 273.15 //(temp * 1.8) + 32
+        if let unit = LocalStorage.preferredUnit,unit == "Metric"{
+            temp = temp - 273.15
+        }else{
+            temp = (temp * 1.8) + 32
         }
         
         return "\(Int(temp))°"

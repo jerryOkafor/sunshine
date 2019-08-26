@@ -47,12 +47,13 @@ class HomeViewController: UIViewController {
             self.pagerControl.hidesForSinglePage = true
         }
     }
+    
     @IBOutlet weak var pagerView: FSPagerView!
     
     private var forcasts = [(String,[ForcastItem])]()
     private var hourlyForcast = [ForcastItem]()
     private var city:CityItem? = nil
-    
+     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,7 @@ class HomeViewController: UIViewController {
         
         //bind vm
         vm.forcastProgressEvent.bind{progress in
+            progress ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
             UIApplication.shared.isNetworkActivityIndicatorVisible = progress
         }.disposed(by: disposeBag)
         
@@ -101,7 +103,35 @@ class HomeViewController: UIViewController {
         
         //load forcast
         vm.forcastByCityName(cityId: ApiClient.defaultCityName)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(citNamePrefChange(_:)), name: .cityNamePrefChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(unitPrefChanged(_:)), name: .unitPrefChanged, object: nil)
 
+    }
+    
+    @objc
+    private func citNamePrefChange(_ notification:Notification){
+        //clear data
+        self.forcasts.removeAll()
+        self.hourlyForcast.removeAll()
+        
+        
+        //get new forcast from api
+        if let prefCityName = LocalStorage.preferredCityName{
+            vm.forcastByCityName(cityId:prefCityName)
+        }
+        
+    }
+    
+    @objc
+    private func unitPrefChanged(_ notifcation:Notification){
+      
+        //reload hourly forcast collection view
+        self.hourlyCollectionView.reloadData()
+        
+        //reload dialy forcast collection view
+        self.pagerView.reloadData()
     }
     
     private func configureHourlyCollectionView(){

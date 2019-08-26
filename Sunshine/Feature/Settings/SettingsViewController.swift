@@ -43,8 +43,12 @@ class SettingsViewController: UIViewController {
         
         let okAction  = UIAlertAction(title: "Ok", style: .default) { (action) in
             if let prefCityName = alert.textFields?[0].text{
+                guard !prefCityName.isEmpty else {return}
+                
                 LocalStorage.preferredCityName = prefCityName
                 self.locationLabel.value = prefCityName
+                
+                NotificationCenter.default.post(name: .cityNamePrefChanged, object: nil)
             }
         }
         
@@ -72,6 +76,8 @@ class SettingsViewController: UIViewController {
             if let valueStr = value as? String{
                 LocalStorage.preferredUnit = valueStr
                 self.unitLabel.value = valueStr
+                
+                NotificationCenter.default.post(name: .unitPrefChanged, object: nil)
             }
             
         }, cancel: { ActionMultipleStringCancelBlock in return }, origin: self.view)

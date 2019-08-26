@@ -27,11 +27,11 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "#73767f")
         
-        self.bindHourForcastFor()
+        self.bindHourForcast()
         
     }
     
-    private func bindHourForcastFor(){
+    private func bindHourForcast(){
          let forecast = self.forecasts[self.hourIndex]
         
         print("Binding forecast Item : \(forecast)")
@@ -53,7 +53,7 @@ class DetailViewController: UIViewController {
         if self.hourIndex - 1 >= 0{
             self.hourIndex = self.hourIndex - 1
             
-             self.bindHourForcastFor()
+             self.bindHourForcast()
         }
     }
     
@@ -61,7 +61,7 @@ class DetailViewController: UIViewController {
         if hourIndex + 1 < forecasts.count{
             self.hourIndex = hourIndex + 1
             
-            self.bindHourForcastFor()
+            self.bindHourForcast()
         }
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -12,6 +12,7 @@
 		89A7BDA64F99958F0E1A4C42 /* Pods_SunshineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBE2C1051624FCA0EBCE0D0 /* Pods_SunshineUITests.framework */; };
 		C467D99023115ADB0085C52A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467D98F23115ADB0085C52A /* DataController.swift */; };
 		C467D99223115CE40085C52A /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467D99123115CE40085C52A /* LocalStorage.swift */; };
+		C467D994231169C50085C52A /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467D993231169C50085C52A /* Notification+Extension.swift */; };
 		C497B6C12308CA2100DB043C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497B6C02308CA2100DB043C /* AppDelegate.swift */; };
 		C497B6C32308CA2100DB043C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497B6C22308CA2100DB043C /* HomeViewController.swift */; };
 		C497B6C62308CA2100DB043C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C497B6C42308CA2100DB043C /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		9B6D44A0F29EDC4E89143846 /* Pods-SunshineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunshineUITests.debug.xcconfig"; path = "Target Support Files/Pods-SunshineUITests/Pods-SunshineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C467D98F23115ADB0085C52A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C467D99123115CE40085C52A /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		C467D993231169C50085C52A /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		C497B6BD2308CA2100DB043C /* Sunshine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunshine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C497B6C02308CA2100DB043C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C497B6C22308CA2100DB043C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				C4C24CFC230DEC0900F4CE05 /* UIColor+Extensions.swift */,
 				C4C24D04230E97D700F4CE05 /* UIView+Extensions.swift */,
 				C4C24D17230EC3E300F4CE05 /* UIViewController+Extensions.swift */,
+				C467D993231169C50085C52A /* Notification+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				C4DE3BE9230C3B3000497BAE /* ApiClient.swift in Sources */,
 				C4C24CFB230DEB3700F4CE05 /* SettingsViewController.swift in Sources */,
 				C4C24CFD230DEC0900F4CE05 /* UIColor+Extensions.swift in Sources */,
+				C467D994231169C50085C52A /* Notification+Extension.swift in Sources */,
 				C4C24D2023112B5C00F4CE05 /* SettingItemView.swift in Sources */,
 				C4DE3BEE230C3F4200497BAE /* Dictionary+Extensions.swift in Sources */,
 				C4DE3BFD230C47F800497BAE /* Wind.swift in Sources */,
