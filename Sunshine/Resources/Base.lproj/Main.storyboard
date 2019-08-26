@@ -401,14 +401,8 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1G7-N3-WMC" customClass="FSPageControl" customModule="FSPagerView">
-                                        <rect key="frame" x="0.0" y="414" width="414" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="c7Q-AL-01i"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhQ-SH-LeP" customClass="FSPagerView" customModule="FSPagerView">
-                                        <rect key="frame" x="0.0" y="454" width="414" height="320"/>
+                                        <rect key="frame" x="0.0" y="424" width="414" height="320"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="VG4-jc-RpC"/>
                                         </constraints>
@@ -420,19 +414,25 @@
                                             <constraint firstAttribute="height" constant="20" id="V0L-wL-IIX"/>
                                         </constraints>
                                     </activityIndicatorView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1G7-N3-WMC" customClass="FSPageControl" customModule="FSPagerView">
+                                        <rect key="frame" x="0.0" y="744" width="414" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="c7Q-AL-01i"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1G7-N3-WMC" secondAttribute="trailing" id="7lu-ao-OFn"/>
                                     <constraint firstItem="Ex6-8F-WSX" firstAttribute="centerY" secondItem="2UB-8X-fR2" secondAttribute="centerY" id="Dhx-o2-ZUG"/>
                                     <constraint firstAttribute="trailing" secondItem="IhQ-SH-LeP" secondAttribute="trailing" id="IzQ-6H-3q8"/>
-                                    <constraint firstItem="IhQ-SH-LeP" firstAttribute="top" secondItem="1G7-N3-WMC" secondAttribute="bottom" constant="20" id="Sgy-8t-IZg"/>
                                     <constraint firstItem="1G7-N3-WMC" firstAttribute="leading" secondItem="2UB-8X-fR2" secondAttribute="leading" id="UaD-6f-3hx"/>
                                     <constraint firstItem="YTm-5h-5I0" firstAttribute="leading" secondItem="2UB-8X-fR2" secondAttribute="leading" id="ZqS-ht-thY"/>
                                     <constraint firstItem="Ex6-8F-WSX" firstAttribute="centerX" secondItem="2UB-8X-fR2" secondAttribute="centerX" id="eSW-LQ-wpH"/>
                                     <constraint firstItem="YTm-5h-5I0" firstAttribute="top" secondItem="2UB-8X-fR2" secondAttribute="top" constant="20" id="lBy-1f-g1Z"/>
                                     <constraint firstItem="IhQ-SH-LeP" firstAttribute="leading" secondItem="2UB-8X-fR2" secondAttribute="leading" id="ncP-TW-2j7"/>
-                                    <constraint firstAttribute="bottom" secondItem="IhQ-SH-LeP" secondAttribute="bottom" id="tIz-tu-rdY"/>
+                                    <constraint firstAttribute="bottom" secondItem="1G7-N3-WMC" secondAttribute="bottom" id="pG3-Ac-eO5"/>
                                     <constraint firstAttribute="trailing" secondItem="YTm-5h-5I0" secondAttribute="trailing" id="vh6-TG-ERJ"/>
+                                    <constraint firstItem="1G7-N3-WMC" firstAttribute="top" secondItem="IhQ-SH-LeP" secondAttribute="bottom" id="ykL-2c-V9s"/>
                                 </constraints>
                             </view>
                         </subviews>
