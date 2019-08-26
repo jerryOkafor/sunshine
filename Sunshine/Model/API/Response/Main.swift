@@ -8,7 +8,7 @@ struct Main : Codable {
 	let pressure : Double
 	let seaLevel : Double
 	let groundLevel : Double
-	let humidity : Int
+	let humidity : Int64
 	let tempKelvin : Double
 
 	enum CodingKeys: String, CodingKey {

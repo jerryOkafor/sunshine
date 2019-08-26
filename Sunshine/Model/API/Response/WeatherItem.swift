@@ -1,7 +1,7 @@
 
 import Foundation
 struct WeatherItem : Codable {
-	let id : Int
+	let id : Int64
 	let main : String
 	let description : String
 	let icon : String

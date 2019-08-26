@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Then
 import FSPagerView
+import CoreData
 
 class GradientView: UIView {
     
@@ -19,7 +20,7 @@ class GradientView: UIView {
     }
     
     override func layoutSubviews() {
-      (layer as! CAGradientLayer).do{
+        (layer as! CAGradientLayer).do{
             $0.colors = [UIColor(hex: "#484b5b").cgColor, UIColor(hex: "#2c2d35").cgColor]
             $0.locations = [0.0 , 1.0]
             $0.startPoint = CGPoint(x: 0.0, y: 1.0)
@@ -31,8 +32,9 @@ class GradientView: UIView {
 
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
-
+    
     var dataController : DataController!
+    private var fetchResultController:NSFetchedResultsController<City>!
     
     private let vm  = HomeViewModel(rxDisposeBag: DisposeBag())
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
@@ -50,83 +52,175 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var pagerView: FSPagerView!
     
-    private var forcasts = [(String,[ForcastItem])]()
-    private var hourlyForcast = [ForcastItem]()
-    private var city:CityItem? = nil
-     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var forcasts = [(String,[Forcast])]()
+    private var hourlyForcast = [Forcast]()
+    private var city:City? = nil
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-       self.configureToolBar()
+        self.configureToolBar()
         
         let refreshBarItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refrsh(_:)))
         let settingBarItem = UIBarButtonItem(image: R.image.ic_settings(), style: .plain, target: self, action: #selector(settings(_:)))
         refreshBarItem.tintColor = UIColor(hex: "#73767f")
         settingBarItem.tintColor = UIColor(hex: "#73767f")
-
+        
         self.navigationItem.rightBarButtonItems = [refreshBarItem,settingBarItem]
         
         
         self.configureFspagerView()
         self.configureHourlyCollectionView()
+        self.setUpFetchResulController()
         
         //bind vm
         vm.forcastProgressEvent.bind{progress in
             progress ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
             UIApplication.shared.isNetworkActivityIndicatorVisible = progress
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         
         vm.errorEvent.bind{error in
             self.showError(error: error)
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         
         vm.infoEvent.bind{info in
             self.showInfo(info: info)
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         
-        vm.forcasResponseEvent.bind{response in
-            self.city = response.city
-            self.navigationItem.title = response.city.name
+        vm.forcasResponseEvent.bind{[unowned self]response in
+            //build a city
+            let city = City(context: self.dataController.backgroundContext)
+            city.id =  response.city.id
+            city.country  = response.city.country
+            city.name = response.city.name
+            city.sunset = response.city.sunset
+            city.sunrise = response.city.sunrise
+            city.timezone = response.city.timezone
             
-            self.forcasts = Dictionary(grouping: response.list, by: { (element: ForcastItem) in
-            return Util.parseDate(element.dateString,displayFormat: "yyyy-MM-dd")!
-            }).sorted(by: { $0.0 < $1.0 })
+            response.list.forEach{
+                let forecast =  Forcast(context: self.dataController.backgroundContext)
+                forecast.date = $0.dateString
+                forecast.city = city
+                forecast.dateMilli = $0.dateMilli
+                
+                let summary = Summary(context: self.dataController.backgroundContext)
+                summary.groundLevel = $0.main.groundLevel
+                summary.humidity = $0.main.humidity
+                summary.maxTemperature = $0.main.maxTemp
+                summary.minTemperature = $0.main.minTemp
+                summary.temperature = $0.main.temp
+                summary.pressure = $0.main.pressure
+                
+                forecast.summary = summary
+                
+                let weatherItem = $0.weather[0]
+                let weather = Weather(context: self.dataController.backgroundContext)
+                weather.desc  = weatherItem.description
+                weather.id = weatherItem.id
+                weather.main = weatherItem.main
+                weather.icon = weatherItem.icon
+                
+                forecast.weather = weather
+            }
             
-            self.pagerView.reloadData()
-            self.pagerControl.numberOfPages  = self.forcasts.count
-            
-            self.loadHourlyForcast(forIndex: 0)
-            
-        }.disposed(by: disposeBag)
-        
-        //load forcast
-        vm.forcastByCityName(cityId: ApiClient.defaultCityName)
+            do{
+                try self.dataController.backgroundContext.save()
+            }catch{
+                print("Unable to save city and forcasts")
+            }
+    
+            }.disposed(by: disposeBag)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(citNamePrefChange(_:)), name: .cityNamePrefChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(unitPrefChanged(_:)), name: .unitPrefChanged, object: nil)
-
+        
     }
     
-    @objc
-    private func citNamePrefChange(_ notification:Notification){
+    private func setUpFetchResulController(){
+        let fetchRequest:NSFetchRequest<City> = City.fetchRequest()
+        
+        let cityName = LocalStorage.preferredCityName ?? ApiClient.defaultCityName
+        
+        let predicate = NSPredicate(format: "name == %@",cityName)
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = predicate
+        
+        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "cities")
+        
+        fetchResultController.delegate = self
+        
+        //try to fetch a city and forcats
+        do{
+            
+            try fetchResultController.performFetch()
+            
+            if let count = fetchResultController?.fetchedObjects?.count, count > 0{
+                let savedCity  = fetchResultController.fetchedObjects![0]
+                self.city = savedCity
+                self.bindFetchedCityAndForcast(savedCity)
+            }else{
+                //load forcast
+                vm.forcastByCityName(cityName: cityName)
+            }
+        }catch{
+            fatalError("Could not peform fetch result: \(error)")
+        }
+    }
+    
+    
+    private func bindFetchedCityAndForcast(_ city:City){
+        
+        self.navigationItem.title = city.name
+        
+        let allObjects =  (city.forcast!.allObjects as! [Forcast])
+        self.forcasts = Dictionary(grouping:allObjects, by: { (element: Forcast) in
+            return  Util.parseDate(element.date!,displayFormat: "yyyy-MM-dd")!
+        }).sorted(by: { $0.0 < $1.0 })
+        
+        self.pagerView.reloadData()
+        self.pagerControl.numberOfPages  = self.forcasts.count
+        
+        self.loadHourlyForcast(forIndex: 0)
+    }
+    
+    private func clearDataAndReload(){
         //clear data
         self.forcasts.removeAll()
         self.hourlyForcast.removeAll()
         
         
-        //get new forcast from api
-        if let prefCityName = LocalStorage.preferredCityName{
-            vm.forcastByCityName(cityId:prefCityName)
+        
+        //clear data from coredata
+        if let savedCity =  self.city{
+            self.dataController.viewContext.delete(savedCity)
         }
         
+        //reload hourly forcast collection view
+        self.hourlyCollectionView.reloadData()
+        
+        //reload dialy forcast collection view
+        self.pagerView.reloadData()
+        self.pagerControl.numberOfPages  = self.forcasts.count
+        
+        
+        //get new forcast from api
+        if let prefCityName = LocalStorage.preferredCityName{
+            vm.forcastByCityName(cityName:prefCityName)
+        }
+    }
+    
+    @objc
+    private func citNamePrefChange(_ notification:Notification){
+        self.clearDataAndReload()
     }
     
     @objc
     private func unitPrefChanged(_ notifcation:Notification){
-      
+        
         //reload hourly forcast collection view
         self.hourlyCollectionView.reloadData()
         
@@ -152,7 +246,7 @@ class HomeViewController: UIViewController {
     private func configureFspagerView(){
         self.pagerView.itemSize = CGSize(width: 230, height: 300)
         self.pagerView.interitemSpacing = 20
-    
+        
         //register nib
         let nib = UINib(resource: R.nib.forcastPagerViewCell)
         self.pagerView.register(nib, forCellWithReuseIdentifier: R.reuseIdentifier.forcastPagerViewCell.identifier)
@@ -165,8 +259,7 @@ class HomeViewController: UIViewController {
     
     @objc
     private func refrsh(_ sender:UIBarButtonItem){
-        //load forcast
-        vm.forcastByCityName(cityId: ApiClient.defaultCityName)
+        self.clearDataAndReload()
     }
     
     @objc
@@ -174,7 +267,7 @@ class HomeViewController: UIViewController {
         let settingsVC = R.storyboard.main.settingsViewController()!
         self.navigationController?.pushViewController(settingsVC, animated: true)
     }
-
+    
     private func configureToolBar(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -182,7 +275,7 @@ class HomeViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
         
     }
-
+    
 }
 
 
@@ -197,20 +290,20 @@ extension HomeViewController : FSPagerViewDataSource{
         
         cell.contentView.addGradient(self.getColorForIndex(index))
         
-        let forcast:(date:String,forcasts:[ForcastItem]) = self.forcasts[index]
+        let forcast:(date:String,forcasts:[Forcast]) = self.forcasts[index]
         
         cell.nameLabel.text = Util.getDayOfWeekText(forcast.0,readFormat:"yyyy-MM-dd")
         cell.dateLabel.text = Util.parseDate(forcast.0,readFormat: "yyyy-MM-dd",displayFormat: "MMM d, yyyy")
         
         let sumIds = forcast.forcasts.reduce(0) { (result, item) -> Int in
-            return item.weather[0].id + result
+            return Int(item.weather!.id) + result
         }
         
         let averageWeatherId = sumIds/forcast.forcasts.count
-        cell.iconImageView.image = Util.getImageForWeatherCondition(weatherId: averageWeatherId) ?? Util.getImageForWeatherCondition(weatherId:forcast.forcasts[0].weather[0].id)
+        cell.iconImageView.image = Util.getImageForWeatherCondition(weatherId: averageWeatherId) ?? Util.getImageForWeatherCondition(weatherId:Int(forcast.forcasts[0].weather!.id))
         
         let sumTemp = forcast.forcasts.reduce(0.0) { (result, item) -> Double in
-            return item.main.temp + result
+            return item.summary!.temperature + result
         }
         
         let averageTemp = sumTemp / Double(forcast.forcasts.count)
@@ -225,7 +318,7 @@ extension HomeViewController : FSPagerViewDataSource{
         case 0 : return [UIColor(hex: "#0d7af3").cgColor, UIColor(hex: "#849ff1").cgColor]
             
         case 1 : return [UIColor(hex: "#f06d08").cgColor, UIColor(hex: "#f3d458").cgColor]
-        
+            
         case 2 : return [UIColor(hex: "#127cf1").cgColor, UIColor(hex: "#f184eca6").cgColor]
             
         case 3 : return [UIColor(hex: "#0ce0d9").cgColor, UIColor(hex: "#84f1d6").cgColor]
@@ -235,7 +328,7 @@ extension HomeViewController : FSPagerViewDataSource{
         default: return [UIColor(hex: "#0d7af3").cgColor, UIColor(hex: "#0d7af3").cgColor]
         }
     }
-
+    
 }
 //FSPageView Datasource
 extension HomeViewController : FSPagerViewDelegate{
@@ -250,7 +343,7 @@ extension HomeViewController : FSPagerViewDelegate{
         self.pagerControl.currentPage = targetIndex
         self.loadHourlyForcast(forIndex: targetIndex)
     }
-
+    
 }
 
 
@@ -265,10 +358,10 @@ extension HomeViewController : UICollectionViewDataSource{
         
         let forcastHour = self.hourlyForcast[indexPath.row]
         
-        cell.timeLabel.text = Util.parseDate(forcastHour.dateString,displayFormat:"ha")?.lowercased()
+        cell.timeLabel.text = Util.parseDate(forcastHour.date!,displayFormat:"ha")?.lowercased()
         cell.tempLabel.text = "22°"
-        cell.iconImageView.image =  Util.getImageForWeatherCondition(weatherId: forcastHour.weather[0].id)
-        cell.tempLabel.text = Util.formatTemperature(temp: forcastHour.main.temp)
+        cell.iconImageView.image =  Util.getImageForWeatherCondition(weatherId: Int(forcastHour.weather!.id))
+        cell.tempLabel.text = Util.formatTemperature(temp: forcastHour.summary!.temperature)
         return cell
     }
     
@@ -285,6 +378,23 @@ extension HomeViewController : UICollectionViewDelegate{
         detailsVC.forecasts = self.hourlyForcast
         detailsVC.hourIndex = indexPath.row
         self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
+}
+
+//DataController Delegate
+extension HomeViewController : NSFetchedResultsControllerDelegate{
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        guard let city  = anObject as? City else {return}
+        
+        switch type {
+        case .insert:
+            self.bindFetchedCityAndForcast(city)
+            break
+        default:
+            break
+        }
     }
 }
 

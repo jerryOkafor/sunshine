@@ -2,7 +2,7 @@
 import Foundation
 
 struct ForcastItem : Codable {
-	let dateMilli : Int
+	let dateMilli : Int64
 	let main : Main
 	let weather : [WeatherItem]
 	let clouds : Clouds
