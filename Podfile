@@ -20,6 +20,7 @@ target 'Sunshine' do
   pod 'R.swift'
   pod 'Then'
   pod 'ActionSheetPicker-3.0', '~> 2.3.0'
+  pod 'RxReachability'
 
   target 'SunshineTests' do
     inherit! :search_paths

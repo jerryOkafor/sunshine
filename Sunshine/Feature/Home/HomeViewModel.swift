@@ -9,6 +9,8 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import RxReachability
+import Reachability
 
 class HomeViewModel {
     private let disposeBag:DisposeBag!
@@ -24,6 +26,12 @@ class HomeViewModel {
     }
     
     func forcastByCityName(cityName:String){
+        
+        guard networkStateRx.value.isConnected else {
+            self.errorEvent.accept("No network connection, please try again later.")
+            return
+        }
+        
         self.forcastProgressEvent.accept(true)
         
         ApiClient.forcastByCityName(cityName: cityName).observeOn(MainScheduler.instance)
@@ -39,4 +47,29 @@ class HomeViewModel {
 
             }).disposed(by: disposeBag)
     }
+    
+    
+    let networkStateRx = HomeViewModel.networkStateRx
+    
+    static let networkStateRx: BehaviorRelay<Reachability.Connection> = {
+        let reachability = Reachability()!
+        let relay = BehaviorRelay<Reachability.Connection>(value: reachability.connection)
+        _ = Reachability.rx.status.subscribe(onNext: {
+            relay.accept($0)
+        })
+        return relay
+    }()
+}
+
+
+extension Reachability.Connection {
+    
+    var isConnected: Bool {
+        return self != .none
+    }
+    
+    var isNotConnected: Bool {
+        return !isConnected
+    }
+    
 }
