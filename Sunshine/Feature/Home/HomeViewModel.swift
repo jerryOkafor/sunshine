@@ -44,6 +44,12 @@ class HomeViewModel {
             },onError:{[weak self]error in
                 guard let strongSelf = self else {return}
                 strongSelf.forcastProgressEvent.accept(false)
+                
+                if let message = (error as? ApiError)?.message{
+                    strongSelf.errorEvent.accept(message)
+                }else{
+                    strongSelf.errorEvent.accept("Unable to get forcast for choosen location")
+                }
 
             }).disposed(by: disposeBag)
     }

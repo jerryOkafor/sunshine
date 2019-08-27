@@ -39,6 +39,8 @@ class SettingsViewController: UIViewController {
             textField.placeholder = "Enter location"
             textField.borderStyle = .roundedRect
             textField.backgroundColor = .clear
+            textField.keyboardType = .alphabet
+            textField.delegate = self
         }
         
         let okAction  = UIAlertAction(title: "Ok", style: .default) { (action) in
@@ -88,5 +90,28 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+}
+
+
+//For Location TextField
+extension SettingsViewController : UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if string.count == 0{
+            return true
+        }
+        
+        let characterSet = CharacterSet(charactersIn: ",.-/:;()$&@\"'?!")
+        
+        if string.rangeOfCharacter(from: characterSet) != nil{
+            return false
+        }
+        
+        if string == " "{
+            return false
+        }
+        
+        return true
     }
 }
