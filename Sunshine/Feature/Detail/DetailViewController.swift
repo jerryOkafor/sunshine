@@ -31,10 +31,14 @@ class DetailViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
     private func bindHourForcast(){
          let forecast = self.forecasts[self.hourIndex]
-        
-        print("Binding forecast Item : \(forecast)")
         
         self.navigationItem.title = "\(self.city.name!) @ \(Util.parseDate(forecast.date!, displayFormat: "ha")!.lowercased())"
         
@@ -63,11 +67,6 @@ class DetailViewController: UIViewController {
             
             self.bindHourForcast()
         }
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
 }

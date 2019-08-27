@@ -261,7 +261,7 @@ class HomeViewController: UIViewController {
             do{
                 try self.dataController.viewContext.save()
             }catch{
-                print("Error deleting : \(error)")
+                debugPrint("Error deleting : \(error)")
             }
         }
         
