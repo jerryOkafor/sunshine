@@ -15,7 +15,6 @@ target 'Sunshine' do
   pod 'RxSwiftExt', '~> 5.0'
   pod 'RxOptional'
 
-  pod 'netfox'
   pod 'SnapKit', '~> 4.0.0'
   pod 'FSPagerView'
   pod 'R.swift'
