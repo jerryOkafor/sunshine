@@ -34,7 +34,8 @@ class HomeViewModel {
         
         self.forcastProgressEvent.accept(true)
         
-        ApiClient.forcastByCityName(cityName: cityName).observeOn(MainScheduler.instance)
+        ApiClient.forcastByCityName(cityName: cityName)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext:{[weak self]response in
                 guard let strongSelf = self else {return}
                 strongSelf.forcastProgressEvent.accept(false)

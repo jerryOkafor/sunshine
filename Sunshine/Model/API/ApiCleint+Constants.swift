@@ -8,7 +8,7 @@
 
 import Foundation
 extension ApiClient{
-    static let defaultCityName = "Edmonton" //Edmont, NG
+    static let defaultCityName = "Edmonton" //Edmont, CA
     static let defaultUnit = "Metric"
     static let baseUrl = "https://api.openweathermap.org/data/2.5/"
 }

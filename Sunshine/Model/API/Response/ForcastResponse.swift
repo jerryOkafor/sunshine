@@ -27,13 +27,13 @@ struct CityItem : Codable {
 struct ForcastResponse: Codable {
     let code : String
     let count : Int
-    let forecast : [ForcastItem]
+    let forecasts : [ForcastItem]
     let city:CityItem
     
     enum CodingKeys : String,CodingKey {
         case code = "cod"
         case count = "cnt"
-        case forecast = "list"
+        case forecasts = "list"
         case city
     }
 }

@@ -47,8 +47,7 @@ class ApiClient {
         /// Returns the endpoint path that we append to the base url
         private var path : String {
             switch self {
-            case .forcastByCityName(let cityName) : return "forecast/daily?q=\(cityName)&cnt=16&appid=\(Configuration.apiKey)"
-                
+            case .forcastByCityName(let cityName) : return "forecast?q=\(cityName)&cnt=40&appid=\(Configuration.apiKey)"
             }
         }
         
@@ -72,11 +71,7 @@ class ApiClient {
             }
             
             //add common headers
-            [
-                "Accept" : "application/json"
-                ].forEach{
-                    urlRequest.addValue($1, forHTTPHeaderField: $0)
-            }
+            ["Accept" : "application/json"].forEach{urlRequest.addValue($1, forHTTPHeaderField: $0)}
             
             return urlRequest
         }

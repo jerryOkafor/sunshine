@@ -1,5 +1,6 @@
 
 import Foundation
+
 struct WeatherItem : Codable {
 	let id : Int64
 	let main : String

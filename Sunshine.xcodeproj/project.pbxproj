@@ -71,6 +71,7 @@
 		67831834DD1AF8502A843771 /* Pods_SunshineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunshineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7086FFD76CAC653FE075CBA8 /* Pods-SunshineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunshineUITests.release.xcconfig"; path = "Target Support Files/Pods-SunshineUITests/Pods-SunshineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9896A6BF2C28F66E001E101A /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		9896AE362C29E239001E101A /* Config.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.example.xcconfig; sourceTree = "<group>"; };
 		A176A6B136A675A7406D0213 /* Pods_Sunshine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sunshine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A863A178C032CC448D3E51D7 /* Pods-SunshineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunshineTests.release.xcconfig"; path = "Target Support Files/Pods-SunshineTests/Pods-SunshineTests.release.xcconfig"; sourceTree = "<group>"; };
 		C467D98F23115ADB0085C52A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				9896A6BF2C28F66E001E101A /* Config.xcconfig */,
+				9896AE362C29E239001E101A /* Config.example.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";

@@ -95,7 +95,7 @@ class HomeViewController: UIViewController {
             self.showInfo(info: info)
             }.disposed(by: disposeBag)
         
-        vm.forcasResponseEvent.bind{[unowned self]response in
+        vm.forcasResponseEvent.bind{[unowned self] response in
             //build a city
             let city = City(context: self.dataController.backgroundContext)
             city.id =  response.city.id
@@ -103,18 +103,19 @@ class HomeViewController: UIViewController {
             city.name = response.city.name
             city.timezone = response.city.timezone
             
-            response.forecast.forEach{
+            response.forecasts.forEach{
+                print("New Forecast: \($0)")
                 let forecast =  Forcast(context: self.dataController.backgroundContext)
-//                forecast.date = $0.dateString
+                forecast.date = $0.dateString
                 forecast.dateMilli = $0.dateMilli
                 
                 let summary = Summary(context: self.dataController.backgroundContext)
-//                summary.groundLevel = $0.main.groundLevel
-//                summary.humidity = $0.main.humidity
-//                summary.maxTemperature = $0.main.maxTemp
-//                summary.minTemperature = $0.main.minTemp
-//                summary.temperature = $0.main.temp
-//                summary.pressure = $0.main.pressure
+                summary.groundLevel = $0.main.groundLevel
+                summary.humidity = $0.main.humidity
+                summary.maxTemperature = $0.main.maxTemp
+                summary.minTemperature = $0.main.minTemp
+                summary.temperature = $0.main.temp
+                summary.pressure = $0.main.pressure
                 
                 forecast.summary = summary
                 
@@ -146,7 +147,7 @@ class HomeViewController: UIViewController {
     
     private func setUpFetchResulController(){
         let fetchRequest:NSFetchRequest<City> = City.fetchRequest()
-        let predicate = NSPredicate(format: "name ==[c] %@",preferredCityName)
+        let predicate = NSPredicate(format: "name == [c] %@",preferredCityName)
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.predicate = predicate
@@ -191,8 +192,7 @@ class HomeViewController: UIViewController {
         let allObjects =  (city.forcast!.allObjects as! [Forcast])
         
         self.forcasts = Dictionary(grouping:allObjects, by: { (element: Forcast) in
-//            return  Util.parseDate(element.date!,displayFormat: "yyyy-MM-dd")!
-            return "No date"
+            return  Util.parseDate(element.date!,displayFormat: "yyyy-MM-dd")!
         }).sorted(by: { $0.0 < $1.0 })
         
         self.pagerView.reloadData()
@@ -364,7 +364,7 @@ extension HomeViewController : UICollectionViewDataSource{
         
         let forcastHour = self.hourlyForcast[indexPath.row]
         
-        cell.timeLabel.text = "No Date"//Util.parseDate(forcastHour.date!,displayFormat:"ha")?.lowercased()
+        cell.timeLabel.text = Util.parseDate(forcastHour.date!,displayFormat:"ha")?.lowercased()
         cell.tempLabel.text = "22°"
         cell.iconImageView.image =  Util.getImageForWeatherCondition(weatherId: Int(forcastHour.weather!.id))
         cell.tempLabel.text = Util.formatTemperature(temp: forcastHour.summary!.temperature)
