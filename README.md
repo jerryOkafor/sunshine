@@ -61,8 +61,8 @@ Suuchine consumes the following `REST` API from [OpenWeather API](https://openwe
 
 ## Todo
 
-- [] Implement notifications.
-- [] Convert sicty names and zip-codes to geo code cordinates](https://openweathermap.org/api/geocoding-api)
+- [ ] Implement notifications.
+- [ ] Convert sicty names and zip-codes to geo code cordinates](https://openweathermap.org/api/geocoding-api)
 
 ## Dependencies and Pods
 
