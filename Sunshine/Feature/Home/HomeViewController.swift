@@ -101,22 +101,20 @@ class HomeViewController: UIViewController {
             city.id =  response.city.id
             city.country  = response.city.country
             city.name = response.city.name
-            city.sunset = response.city.sunset
-            city.sunrise = response.city.sunrise
             city.timezone = response.city.timezone
             
-            response.list.forEach{
+            response.forecast.forEach{
                 let forecast =  Forcast(context: self.dataController.backgroundContext)
-                forecast.date = $0.dateString
+//                forecast.date = $0.dateString
                 forecast.dateMilli = $0.dateMilli
                 
                 let summary = Summary(context: self.dataController.backgroundContext)
-                summary.groundLevel = $0.main.groundLevel
-                summary.humidity = $0.main.humidity
-                summary.maxTemperature = $0.main.maxTemp
-                summary.minTemperature = $0.main.minTemp
-                summary.temperature = $0.main.temp
-                summary.pressure = $0.main.pressure
+//                summary.groundLevel = $0.main.groundLevel
+//                summary.humidity = $0.main.humidity
+//                summary.maxTemperature = $0.main.maxTemp
+//                summary.minTemperature = $0.main.minTemp
+//                summary.temperature = $0.main.temp
+//                summary.pressure = $0.main.pressure
                 
                 forecast.summary = summary
                 
@@ -193,7 +191,8 @@ class HomeViewController: UIViewController {
         let allObjects =  (city.forcast!.allObjects as! [Forcast])
         
         self.forcasts = Dictionary(grouping:allObjects, by: { (element: Forcast) in
-            return  Util.parseDate(element.date!,displayFormat: "yyyy-MM-dd")!
+//            return  Util.parseDate(element.date!,displayFormat: "yyyy-MM-dd")!
+            return "No date"
         }).sorted(by: { $0.0 < $1.0 })
         
         self.pagerView.reloadData()
@@ -365,7 +364,7 @@ extension HomeViewController : UICollectionViewDataSource{
         
         let forcastHour = self.hourlyForcast[indexPath.row]
         
-        cell.timeLabel.text = Util.parseDate(forcastHour.date!,displayFormat:"ha")?.lowercased()
+        cell.timeLabel.text = "No Date"//Util.parseDate(forcastHour.date!,displayFormat:"ha")?.lowercased()
         cell.tempLabel.text = "22°"
         cell.iconImageView.image =  Util.getImageForWeatherCondition(weatherId: Int(forcastHour.weather!.id))
         cell.tempLabel.text = Util.formatTemperature(temp: forcastHour.summary!.temperature)

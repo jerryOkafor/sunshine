@@ -11,9 +11,11 @@ Sunshine uses external `Pods`, simply `cd` to the folder where you have sunshine
 ## Description
 Sunshine is composed of three ViewController:
 
-<img src="./screenshots/IMG_3889.png" alt="HomeViewController" title="A cute kitten"  style="max-width:30%;" /> 
-<img src="./screenshots/IMG_3890.png" alt="DetailsViewController" title="A cute kitten"  style="max-width:30%;" /> 
-<img src="./screenshots/IMG_3892.jpg" alt="SwtingsViewController" title="A cute kitten"  style="max-width:30%;" />
+<p align="center">
+  <img src="./screenshots/IMG_3889.png" width="200" />
+  <img src="./screenshots/IMG_3890.png" width="200" />
+  <img src="./screenshots/IMG_3892.jpg" width="200" />
+</p>
 
 
 * **HomeViewController**

@@ -58,7 +58,7 @@ class HomeViewModel {
     let networkStateRx = HomeViewModel.networkStateRx
     
     static let networkStateRx: BehaviorRelay<Reachability.Connection> = {
-        let reachability = Reachability()!
+        let reachability = try! Reachability()
         let relay = BehaviorRelay<Reachability.Connection>(value: reachability.connection)
         _ = Reachability.rx.status.subscribe(onNext: {
             relay.accept($0)

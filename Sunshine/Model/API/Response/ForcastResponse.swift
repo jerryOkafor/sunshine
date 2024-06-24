@@ -23,19 +23,17 @@ struct CityItem : Codable {
     let coord:CoordinateItem
     let country:String
     let timezone:Int64
-    let sunrise:Int64
-    let sunset:Int64
 }
 struct ForcastResponse: Codable {
     let code : String
     let count : Int
-    let list : [ForcastItem]
+    let forecast : [ForcastItem]
     let city:CityItem
     
     enum CodingKeys : String,CodingKey {
         case code = "cod"
         case count = "cnt"
-        case list
+        case forecast = "list"
         case city
     }
 }

@@ -4,315 +4,190 @@
 //
 
 import Foundation
-import Rswift
+import RswiftResources
 import UIKit
 
-/// This `R` struct is generated and contains references to static resources.
-struct R: Rswift.Validatable {
-  fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(Locale.init) ?? Locale.current
-  fileprivate static let hostingBundle = Bundle(for: R.Class.self)
-  
-  static func validate() throws {
-    try intern.validate()
-  }
-  
-  /// This `R.image` struct is generated, and contains static references to 19 images.
-  struct image {
-    /// Image `icClear`.
-    static let icClear = Rswift.ImageResource(bundle: R.hostingBundle, name: "icClear")
-    /// Image `icCloudy`.
-    static let icCloudy = Rswift.ImageResource(bundle: R.hostingBundle, name: "icCloudy")
-    /// Image `icFogCopy`.
-    static let icFogCopy = Rswift.ImageResource(bundle: R.hostingBundle, name: "icFogCopy")
-    /// Image `icLightClouds`.
-    static let icLightClouds = Rswift.ImageResource(bundle: R.hostingBundle, name: "icLightClouds")
-    /// Image `icLightRain`.
-    static let icLightRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "icLightRain")
-    /// Image `icMapPin`.
-    static let icMapPin = Rswift.ImageResource(bundle: R.hostingBundle, name: "icMapPin")
-    /// Image `icNotification`.
-    static let icNotification = Rswift.ImageResource(bundle: R.hostingBundle, name: "icNotification")
-    /// Image `icRain`.
-    static let icRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "icRain")
-    /// Image `icSnow`.
-    static let icSnow = Rswift.ImageResource(bundle: R.hostingBundle, name: "icSnow")
-    /// Image `icStorm`.
-    static let icStorm = Rswift.ImageResource(bundle: R.hostingBundle, name: "icStorm")
-    /// Image `icThermometer`.
-    static let icThermometer = Rswift.ImageResource(bundle: R.hostingBundle, name: "icThermometer")
-    /// Image `ic_arrow_left`.
-    static let ic_arrow_left = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_arrow_left")
-    /// Image `ic_arrow_right`.
-    static let ic_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_arrow_right")
-    /// Image `ic_humidity`.
-    static let ic_humidity = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_humidity")
-    /// Image `ic_logo`.
-    static let ic_logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_logo")
-    /// Image `ic_pressure`.
-    static let ic_pressure = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_pressure")
-    /// Image `ic_settings`.
-    static let ic_settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_settings")
-    /// Image `ic_uv_index`.
-    static let ic_uv_index = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_uv_index")
-    /// Image `ic_visibility`.
-    static let ic_visibility = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_visibility")
-    
-    /// `UIImage(named: "icClear", bundle: ..., traitCollection: ...)`
-    static func icClear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icClear, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icCloudy", bundle: ..., traitCollection: ...)`
-    static func icCloudy(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icCloudy, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icFogCopy", bundle: ..., traitCollection: ...)`
-    static func icFogCopy(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icFogCopy, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icLightClouds", bundle: ..., traitCollection: ...)`
-    static func icLightClouds(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icLightClouds, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icLightRain", bundle: ..., traitCollection: ...)`
-    static func icLightRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icLightRain, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icMapPin", bundle: ..., traitCollection: ...)`
-    static func icMapPin(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icMapPin, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icNotification", bundle: ..., traitCollection: ...)`
-    static func icNotification(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icNotification, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icRain", bundle: ..., traitCollection: ...)`
-    static func icRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icRain, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icSnow", bundle: ..., traitCollection: ...)`
-    static func icSnow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icSnow, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icStorm", bundle: ..., traitCollection: ...)`
-    static func icStorm(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icStorm, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "icThermometer", bundle: ..., traitCollection: ...)`
-    static func icThermometer(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icThermometer, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_arrow_left", bundle: ..., traitCollection: ...)`
-    static func ic_arrow_left(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_arrow_left, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_arrow_right", bundle: ..., traitCollection: ...)`
-    static func ic_arrow_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_arrow_right, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_humidity", bundle: ..., traitCollection: ...)`
-    static func ic_humidity(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_humidity, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_logo", bundle: ..., traitCollection: ...)`
-    static func ic_logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_logo, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_pressure", bundle: ..., traitCollection: ...)`
-    static func ic_pressure(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_pressure, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_settings", bundle: ..., traitCollection: ...)`
-    static func ic_settings(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_settings, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_uv_index", bundle: ..., traitCollection: ...)`
-    static func ic_uv_index(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_uv_index, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "ic_visibility", bundle: ..., traitCollection: ...)`
-    static func ic_visibility(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ic_visibility, compatibleWith: traitCollection)
-    }
-    
-    fileprivate init() {}
-  }
-  
-  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
-  struct nib {
-    /// Nib `ForcastPagerViewCell`.
-    static let forcastPagerViewCell = _R.nib._ForcastPagerViewCell()
-    
-    /// `UINib(name: "ForcastPagerViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.forcastPagerViewCell) instead")
-    static func forcastPagerViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.forcastPagerViewCell)
-    }
-    
-    static func forcastPagerViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ForcastPagerViewCell? {
-      return R.nib.forcastPagerViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ForcastPagerViewCell
-    }
-    
-    fileprivate init() {}
-  }
-  
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
-  struct reuseIdentifier {
-    /// Reuse identifier `DailyItemViewCell`.
-    static let dailyItemViewCell: Rswift.ReuseIdentifier<DailyItemViewCell> = Rswift.ReuseIdentifier(identifier: "DailyItemViewCell")
-    /// Reuse identifier `ForcastPagerViewCell`.
-    static let forcastPagerViewCell: Rswift.ReuseIdentifier<ForcastPagerViewCell> = Rswift.ReuseIdentifier(identifier: "ForcastPagerViewCell")
-    
-    fileprivate init() {}
-  }
-  
-  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
-  struct storyboard {
-    /// Storyboard `LaunchScreen`.
-    static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
-    
-    /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
-    static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
-    }
-    
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    
-    fileprivate init() {}
-  }
-  
-  fileprivate struct intern: Rswift.Validatable {
-    fileprivate static func validate() throws {
-      try _R.validate()
-    }
-    
-    fileprivate init() {}
-  }
-  
-  fileprivate class Class {}
-  
-  fileprivate init() {}
-}
+private class BundleFinder {}
+let R = _R(bundle: Bundle(for: BundleFinder.self))
 
-struct _R: Rswift.Validatable {
-  static func validate() throws {
-    try storyboard.validate()
-    try nib.validate()
+struct _R {
+  let bundle: Foundation.Bundle
+
+  let reuseIdentifier = reuseIdentifier()
+
+  var image: image { .init(bundle: bundle) }
+  var file: file { .init(bundle: bundle) }
+  var nib: nib { .init(bundle: bundle) }
+  var storyboard: storyboard { .init(bundle: bundle) }
+
+  func image(bundle: Foundation.Bundle) -> image {
+    .init(bundle: bundle)
   }
-  
-  struct nib: Rswift.Validatable {
-    static func validate() throws {
-      try _ForcastPagerViewCell.validate()
-    }
-    
-    struct _ForcastPagerViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
-      typealias ReusableType = ForcastPagerViewCell
-      
-      let bundle = R.hostingBundle
-      let identifier = "ForcastPagerViewCell"
-      let name = "ForcastPagerViewCell"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ForcastPagerViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ForcastPagerViewCell
-      }
-      
-      static func validate() throws {
-        if UIKit.UIImage(named: "ic_logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_logo' is used in nib 'ForcastPagerViewCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, *) {
-        }
-      }
-      
-      fileprivate init() {}
-    }
-    
-    fileprivate init() {}
+  func file(bundle: Foundation.Bundle) -> file {
+    .init(bundle: bundle)
   }
-  
-  struct storyboard: Rswift.Validatable {
-    static func validate() throws {
-      try launchScreen.validate()
-      try main.validate()
+  func nib(bundle: Foundation.Bundle) -> nib {
+    .init(bundle: bundle)
+  }
+  func storyboard(bundle: Foundation.Bundle) -> storyboard {
+    .init(bundle: bundle)
+  }
+  func validate() throws {
+    try self.nib.validate()
+    try self.storyboard.validate()
+  }
+
+  struct project {
+    let developmentRegion = "en"
+  }
+
+  /// This `_R.image` struct is generated, and contains static references to 19 images.
+  struct image {
+    let bundle: Foundation.Bundle
+
+    /// Image `icClear`.
+    var icClear: RswiftResources.ImageResource { .init(name: "icClear", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icCloudy`.
+    var icCloudy: RswiftResources.ImageResource { .init(name: "icCloudy", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icFogCopy`.
+    var icFogCopy: RswiftResources.ImageResource { .init(name: "icFogCopy", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icLightClouds`.
+    var icLightClouds: RswiftResources.ImageResource { .init(name: "icLightClouds", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icLightRain`.
+    var icLightRain: RswiftResources.ImageResource { .init(name: "icLightRain", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icMapPin`.
+    var icMapPin: RswiftResources.ImageResource { .init(name: "icMapPin", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icNotification`.
+    var icNotification: RswiftResources.ImageResource { .init(name: "icNotification", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icRain`.
+    var icRain: RswiftResources.ImageResource { .init(name: "icRain", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icSnow`.
+    var icSnow: RswiftResources.ImageResource { .init(name: "icSnow", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icStorm`.
+    var icStorm: RswiftResources.ImageResource { .init(name: "icStorm", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icThermometer`.
+    var icThermometer: RswiftResources.ImageResource { .init(name: "icThermometer", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_arrow_left`.
+    var ic_arrow_left: RswiftResources.ImageResource { .init(name: "ic_arrow_left", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_arrow_right`.
+    var ic_arrow_right: RswiftResources.ImageResource { .init(name: "ic_arrow_right", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_humidity`.
+    var ic_humidity: RswiftResources.ImageResource { .init(name: "ic_humidity", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_logo`.
+    var ic_logo: RswiftResources.ImageResource { .init(name: "ic_logo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_pressure`.
+    var ic_pressure: RswiftResources.ImageResource { .init(name: "ic_pressure", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_settings`.
+    var ic_settings: RswiftResources.ImageResource { .init(name: "ic_settings", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_uv_index`.
+    var ic_uv_index: RswiftResources.ImageResource { .init(name: "ic_uv_index", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_visibility`.
+    var ic_visibility: RswiftResources.ImageResource { .init(name: "ic_visibility", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+  }
+
+  /// This `_R.file` struct is generated, and contains static references to 1 resource files.
+  struct file {
+    let bundle: Foundation.Bundle
+
+    /// Resource file `Config.xcconfig`.
+    var configXcconfig: RswiftResources.FileResource { .init(name: "Config", pathExtension: "xcconfig", bundle: bundle, locale: LocaleReference.none) }
+  }
+
+  /// This `_R.nib` struct is generated, and contains static references to 1 nibs.
+  struct nib {
+    let bundle: Foundation.Bundle
+
+    /// Nib `ForcastPagerViewCell`.
+    var forcastPagerViewCell: RswiftResources.NibReferenceReuseIdentifier<ForcastPagerViewCell, ForcastPagerViewCell> { .init(name: "ForcastPagerViewCell", bundle: bundle, identifier: "ForcastPagerViewCell") }
+
+    func validate() throws {
+      if UIKit.UIImage(named: "ic_logo", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ic_logo' is used in nib 'ForcastPagerViewCell', but couldn't be loaded.") }
     }
-    
-    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+  }
+
+  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  struct reuseIdentifier {
+
+    /// Reuse identifier `DailyItemViewCell`.
+    let dailyItemViewCell: RswiftResources.ReuseIdentifier<DailyItemViewCell> = .init(identifier: "DailyItemViewCell")
+
+    /// Reuse identifier `ForcastPagerViewCell`.
+    let forcastPagerViewCell: RswiftResources.ReuseIdentifier<ForcastPagerViewCell> = .init(identifier: "ForcastPagerViewCell")
+  }
+
+  /// This `_R.storyboard` struct is generated, and contains static references to 2 storyboards.
+  struct storyboard {
+    let bundle: Foundation.Bundle
+    var launchScreen: launchScreen { .init(bundle: bundle) }
+    var main: main { .init(bundle: bundle) }
+
+    func launchScreen(bundle: Foundation.Bundle) -> launchScreen {
+      .init(bundle: bundle)
+    }
+    func main(bundle: Foundation.Bundle) -> main {
+      .init(bundle: bundle)
+    }
+    func validate() throws {
+      try self.launchScreen.validate()
+      try self.main.validate()
+    }
+
+
+    /// Storyboard `LaunchScreen`.
+    struct launchScreen: RswiftResources.StoryboardReference, RswiftResources.InitialControllerContainer {
       typealias InitialController = UIKit.UIViewController
-      
-      let bundle = R.hostingBundle
+
+      let bundle: Foundation.Bundle
+
       let name = "LaunchScreen"
-      
-      static func validate() throws {
-        if UIKit.UIImage(named: "ic_logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_logo' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
-        if #available(iOS 11.0, *) {
-        }
+      func validate() throws {
+        if UIKit.UIImage(named: "ic_logo", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ic_logo' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
-      
-      fileprivate init() {}
     }
-    
-    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+
+    /// Storyboard `Main`.
+    struct main: RswiftResources.StoryboardReference, RswiftResources.InitialControllerContainer {
       typealias InitialController = UIKit.UINavigationController
-      
-      let bundle = R.hostingBundle
-      let detailViewController = StoryboardViewControllerResource<DetailViewController>(identifier: "DetailViewController")
-      let homeViewController = StoryboardViewControllerResource<HomeViewController>(identifier: "HomeViewController")
+
+      let bundle: Foundation.Bundle
+
       let name = "Main"
-      let settingsViewController = StoryboardViewControllerResource<SettingsViewController>(identifier: "SettingsViewController")
-      
-      func detailViewController(_: Void = ()) -> DetailViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailViewController)
+
+      var detailViewController: RswiftResources.StoryboardViewControllerIdentifier<DetailViewController> { .init(identifier: "DetailViewController", storyboard: name, bundle: bundle) }
+      var homeViewController: RswiftResources.StoryboardViewControllerIdentifier<HomeViewController> { .init(identifier: "HomeViewController", storyboard: name, bundle: bundle) }
+      var settingsViewController: RswiftResources.StoryboardViewControllerIdentifier<SettingsViewController> { .init(identifier: "SettingsViewController", storyboard: name, bundle: bundle) }
+
+      func validate() throws {
+        if UIKit.UIImage(named: "icMapPin", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'icMapPin' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icNotification", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'icNotification' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icThermometer", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'icThermometer' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_arrow_left", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ic_arrow_left' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_arrow_right", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ic_arrow_right' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_humidity", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ic_humidity' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_logo", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ic_logo' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_pressure", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ic_pressure' is used in storyboard 'Main', but couldn't be loaded.") }
+        if detailViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'detailViewController' could not be loaded from storyboard 'Main' as 'DetailViewController'.") }
+        if homeViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Main' as 'HomeViewController'.") }
+        if settingsViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'settingsViewController' could not be loaded from storyboard 'Main' as 'SettingsViewController'.") }
       }
-      
-      func homeViewController(_: Void = ()) -> HomeViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: homeViewController)
-      }
-      
-      func settingsViewController(_: Void = ()) -> SettingsViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsViewController)
-      }
-      
-      static func validate() throws {
-        if UIKit.UIImage(named: "icMapPin", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icMapPin' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icNotification", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icNotification' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icThermometer", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icThermometer' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_arrow_left", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_arrow_left' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_arrow_right' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_humidity", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_humidity' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_logo' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_pressure", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_pressure' is used in storyboard 'Main', but couldn't be loaded.") }
-        if #available(iOS 11.0, *) {
-        }
-        if _R.storyboard.main().detailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailViewController' could not be loaded from storyboard 'Main' as 'DetailViewController'.") }
-        if _R.storyboard.main().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Main' as 'HomeViewController'.") }
-        if _R.storyboard.main().settingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsViewController' could not be loaded from storyboard 'Main' as 'SettingsViewController'.") }
-      }
-      
-      fileprivate init() {}
     }
-    
-    fileprivate init() {}
   }
-  
-  fileprivate init() {}
 }

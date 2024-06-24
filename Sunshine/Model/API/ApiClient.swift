@@ -47,7 +47,7 @@ class ApiClient {
         /// Returns the endpoint path that we append to the base url
         private var path : String {
             switch self {
-            case .forcastByCityName(let cityName) : return "forecast?q=\(cityName)&cnt=40&appid=\(ApiClient.appId)"
+            case .forcastByCityName(let cityName) : return "forecast/daily?q=\(cityName)&cnt=16&appid=\(Configuration.apiKey)"
                 
             }
         }
@@ -86,7 +86,7 @@ class ApiClient {
     static func request<T : Codable>(_ urlRequestConvertible:URLRequestConvertible) -> Observable<T>{
         return Observable<T>.create{ observer in
             let request = Session.default.request(urlRequestConvertible).validate()
-                .responseDecodable{ (response:DataResponse<T>) in
+                .responseDecodable{ (response:DataResponse<T,AFError>) in
                     switch response.result{
                     case .success(let value):
                         //Everything is fine, return the value in onNext

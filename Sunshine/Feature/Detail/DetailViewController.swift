@@ -40,7 +40,8 @@ class DetailViewController: UIViewController {
     private func bindHourForcast(){
          let forecast = self.forecasts[self.hourIndex]
         
-        self.navigationItem.title = "\(self.city.name!) @ \(Util.parseDate(forecast.date!, displayFormat: "ha")!.lowercased())"
+        self.navigationItem.title = "\(self.city.name!) @ No Date"
+//        self.navigationItem.title = "\(self.city.name!) @ \(Util.parseDate(forecast.date!, displayFormat: "ha")!.lowercased())"
         
         self.descLabel.text  = forecast.weather?.desc
         self.maxTempLabel.text = Util.formatTemperature(temp: forecast.summary!.maxTemperature)

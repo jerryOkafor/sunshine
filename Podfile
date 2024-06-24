@@ -7,20 +7,20 @@ target 'Sunshine' do
 
   # Pods for Sunshine
 
-  pod 'Alamofire', '~> 5.0.0-beta.5'
+  pod 'Alamofire', '~> 5.9.1'
 
   #Rx
-  pod 'RxSwift', '~> 5.0'
-  pod 'RxCocoa', '~> 5.0'
-  pod 'RxSwiftExt', '~> 5.0'
+  pod 'RxSwift', '~> 6.7.1'
+  pod 'RxCocoa', '~> 6.7.1'
+  pod 'RxSwiftExt', '~> 6.2.1'
   pod 'RxOptional'
 
-  pod 'SnapKit', '~> 4.0.0'
-  pod 'FSPagerView'
+  pod 'SnapKit', '~> 5.7.1'
+  pod 'FSPagerView','~> 0.8.3'
   pod 'R.swift'
   pod 'Then'
-  pod 'ActionSheetPicker-3.0', '~> 2.3.0'
-  pod 'RxReachability'
+  pod 'ActionSheetPicker-3.0', '~> 2.7.4'
+  pod 'RxReachability', '~> 1.2.1'
 
   target 'SunshineTests' do
     inherit! :search_paths
@@ -33,3 +33,13 @@ target 'Sunshine' do
   end
 
 end
+
+post_install do |installer|
+     installer.generated_projects.each do |project|
+           project.targets.each do |target|
+               target.build_configurations.each do |config|
+                   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.5'
+                end
+           end
+    end
+ end

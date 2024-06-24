@@ -8,8 +8,21 @@
 
 import Foundation
 extension ApiClient{
-    static let defaultCityName = "Lagos" //Lagos NG
+    static let defaultCityName = "Edmonton" //Edmont, NG
     static let defaultUnit = "Metric"
-    static let appId = "8dbfa5597476de964fe8fdad06937ec4"
     static let baseUrl = "https://api.openweathermap.org/data/2.5/"
+}
+
+
+enum Configuration{
+    
+    //MARK:- Public API - API Key
+    static var apiKey : String{
+        string(for: "API_KEY")
+    }
+    
+    // MARK: - Helper methods
+    static private func string(for key: String) -> String {
+            Bundle.main.infoDictionary?[key] as! String
+        }
 }
